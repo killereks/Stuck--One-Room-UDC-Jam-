@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using NaughtyAttributes;
-using UnityEngine.UI;
-using TMPro;
 
 public class PlayerInteraction : MonoBehaviour {
 
@@ -14,9 +10,7 @@ public class PlayerInteraction : MonoBehaviour {
     public float interactionDistance = 2f;
 
     [BoxGroup("UI")]
-    public GameObject interactionUI;
-    [BoxGroup("UI")]
-    public TMPro.TextMeshProUGUI interactionText;
+    public GameObject interactionCrosshair;
 
     public static PlayerInteraction instance;
 
@@ -43,14 +37,13 @@ public class PlayerInteraction : MonoBehaviour {
 
             if (interactable != null) {
                 hitSomething = true;
-                interactionText.text = interactable.GetDescription();
                 // USE INPUT MANAGER
-                if (Input.GetKeyDown(KeyCode.E)) {
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)) {
                     interactable.Interact();
                 }
             }
         }
 
-        interactionUI.SetActive(hitSomething);
+        interactionCrosshair.SetActive(hitSomething);
     }
 }

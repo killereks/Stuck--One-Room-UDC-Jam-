@@ -31,13 +31,17 @@ public class PlayerMovement : MonoBehaviour {
     float footstepTime;
     public float footstepInterval = 4f;
 
-    private void Start() {
+    public static PlayerMovement Instance;
+
+    private void Awake() {
         rb = GetComponent<Rigidbody>();
 
         collider = GetComponent<Collider>();
 
         LockCursor(true);
         canMove = true;
+
+        Instance = this;
     }
 
     public void LockCursor(bool newState) {
@@ -53,15 +57,18 @@ public class PlayerMovement : MonoBehaviour {
         if (!canMove) rb.velocity = Vector3.zero;
     }
 
+    public void SetXCameraRotation(float newX) {
+        cameraXRotation = newX;
+    }
+
     private void Update() {
-        cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, IsRunning() ? 75f : 60f, 10f * Time.deltaTime);
         if (canMove) {
             cameraController();
         }
     }
 
     private void FixedUpdate() {
-        if (canMove) movementController();
+        movementController();
     }
 
     private void cameraController() {
@@ -81,6 +88,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void movementController() {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+        if (!canMove) {
+            input = Vector2.zero;
+        }
 
         ManageFootsteps();
 
@@ -108,17 +119,12 @@ public class PlayerMovement : MonoBehaviour {
         velocity.y = 0f; // no footstep sounds in the air
 
         footstepTime += velocity.magnitude * Time.deltaTime;
-        if (IsRunning()) footstepTime += input.magnitude * Time.deltaTime;
 
         if (footstepTime >= footstepInterval) {
             footstepTime = 0f;
             //footstepManager.PlayFootstepSound();
             //footstepAudioSource.PlayOneShot(footstepSounds[Random.Range(0, footstepSounds.Length)]);
         }
-    }
-
-    bool IsRunning() {
-        return Input.GetKey(KeyCode.LeftShift) && Input.GetAxisRaw("Vertical") > 0f;
     }
 
     bool IsGrounded() {

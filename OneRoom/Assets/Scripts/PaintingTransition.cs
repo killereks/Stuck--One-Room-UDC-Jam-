@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PaintingTransition : MonoBehaviour, IInteractable {
@@ -5,25 +6,56 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
     public Camera linkedCam;
 
     public Cinemachine.CinemachineVirtualCamera vCam;
-    public Cinemachine.CinemachineVirtualCamera transitionVCam;
+
+    [Range(0,3)]
+    public float scale;
 
     MeshRenderer meshRenderer;
-
-    public string GetDescription() {
-        return "Look at painting";
-    }
 
     public void Interact() {
         vCam.Priority = 250;
 
+        Vector3 pos = linkedCam.transform.position;
+        pos.y = PlayerMovement.Instance.cam.transform.position.y;
+        linkedCam.transform.position = pos;
+
+        PlayerMovement.Instance.ToggleMovement(false);
+
         LeanTween.delayedCall(1f, () => {
             vCam.Priority = 0;
-            transitionVCam.Priority = 250;
+            PlayerMovement player = PlayerMovement.Instance;
+
+            player.ToggleMovement(true);
+
+            Vector3 targetPos = linkedCam.transform.position;
+
+            if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit)) {
+                targetPos.y = hit.point.y + 0.9f;
+            }
+            player.transform.position = targetPos;
+
+            player.cam.transform.rotation = linkedCam.transform.rotation;
+            player.SetXCameraRotation(linkedCam.transform.eulerAngles.x);
+
+            PaintingTransitionManager.instance.UpdateAllPaintings();
         });
     }
 
+    private void OnValidate() {
+        SetPaintingScale();
+    }
+
     void Start(){
+        RenderImages();
+
+        SetPaintingScale();
+        SnapCameraToCanvas();
+    }
+
+    public void RenderImages() {
         meshRenderer = GetComponent<MeshRenderer>();
+
+        linkedCam.enabled = true;
 
         RenderTexture renderTexture = new RenderTexture(1920, 1080, 16, RenderTextureFormat.ARGB32);
 
@@ -31,11 +63,11 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
         linkedCam.Render();
         linkedCam.enabled = false;
 
-        transform.localScale = new Vector3(linkedCam.aspect, 1f, 1f);
-
         meshRenderer.material.mainTexture = renderTexture;
+    }
 
-        SnapCameraToCanvas();
+    void SetPaintingScale() {
+        transform.localScale = new Vector3(linkedCam.aspect, 1f, transform.localScale.z) * scale;
     }
 
     void OnDrawGizmos() {
@@ -56,22 +88,12 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
         float z = canvasPos.z;
 
         float fov = vCam.m_Lens.FieldOfView / 2f;
-        float canvasHeight = meshRenderer.bounds.size.y * transform.lossyScale.y;
+        float canvasHeight = meshRenderer.bounds.size.y;// * transform.lossyScale.y;
 
         float opposite = canvasHeight / 2f;
         float adjacent = opposite / Mathf.Tan(Mathf.Deg2Rad * fov);
         vCam.transform.position = new Vector3(x, y, z) - vCam.transform.forward * adjacent;
         vCam.m_Lens.FarClipPlane = Mathf.Ceil(adjacent);
-
-        /*Bounds bounds = meshRenderer.bounds;
-
-        float cameraDistance = 2.0f; // Constant factor
-        Vector3 objectSizes = bounds.max - bounds.min;
-        float objectSize = Mathf.Max(objectSizes.x, objectSizes.y, objectSizes.z);
-        float cameraView = 2.0f * Mathf.Tan(0.5f * Mathf.Deg2Rad * vCam.m_Lens.FieldOfView); // Visible height 1 meter in front
-        float distance = cameraDistance * objectSize / cameraView; // Combined wanted distance from the object
-        distance += 0.5f * objectSize; // Estimated offset from the center to the outside of the object
-        vCam.transform.position = bounds.center - distance * vCam.transform.forward;*/
     }
 
 
