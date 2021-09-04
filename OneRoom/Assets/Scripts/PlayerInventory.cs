@@ -14,6 +14,8 @@ public class PlayerInventory : MonoBehaviour {
 
     private void Start() {
         instance = this;
+
+        UpdateUI();
     }
 
     /// <summary>
@@ -35,9 +37,9 @@ public class PlayerInventory : MonoBehaviour {
     }
 
     public void UpdateUI() {
-        if (item == null) {
-            itemIconImage.sprite = null;
-        } else {
+        itemIconImage.gameObject.SetActive(item != null);
+
+        if (item != null) {
             itemIconImage.sprite = item.icon;
         }
     }
@@ -54,17 +56,21 @@ public class PlayerInventory : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyCode.Q)) {
-            Ray ray = Camera.main.ViewportPointToRay(Vector3.one / 2f);
+            if (placeItem != null) {
+                Ray ray = Camera.main.ViewportPointToRay(Vector3.one / 2f);
 
-            if (Physics.Raycast(ray, out RaycastHit hit)) {
-                placeItem.transform.position = hit.point + Vector3.up * placeItemBounds.size.y / 2f;// + placeItemBounds.size * Vector3.Dot(hit.normal, placeItemBounds.size);
-                placeItem.transform.rotation = Quaternion.FromToRotation(hit.normal, Vector3.up);
+                if (Physics.Raycast(ray, out RaycastHit hit)) {
+                    placeItem.transform.position = hit.point + Vector3.up * placeItemBounds.size.y / 2f;// + placeItemBounds.size * Vector3.Dot(hit.normal, placeItemBounds.size);
+                    placeItem.transform.rotation = Quaternion.FromToRotation(hit.normal, Vector3.up);
+                }
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Q)) {
-            placeItem.layer = 1;
-            placeItem = null;
+            if (placeItem != null) {
+                placeItem.layer = 1;
+                placeItem = null;
+            }
         }
     }
 }

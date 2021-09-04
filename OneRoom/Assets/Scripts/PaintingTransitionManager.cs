@@ -10,6 +10,8 @@ public class PaintingTransitionManager : MonoBehaviour {
         paintingTransitions = FindObjectsOfType<PaintingTransition>();
 
         instance = this;
+
+        UpdateAllPaintings();
     }
 
     public void UpdateAllPaintings() {
