@@ -26,7 +26,7 @@ public class Door : MonoBehaviour, IInteractable
     Transform player;
 
     bool isOpen;
-    private string description;
+   // private string description;
 
     public bool IsLocked
     {
@@ -77,8 +77,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        description = "Open the door";
-        if (isOpen) description = "Close the door";
+/*        description = "Open the door";
+        if (isOpen) description = "Close the door";*/
 
 
         if (IsLocked)

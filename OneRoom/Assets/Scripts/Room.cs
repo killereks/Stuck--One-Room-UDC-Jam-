@@ -9,12 +9,22 @@ public class Room : MonoBehaviour
     public TextMeshProUGUI roomNumber;
     public Collider insideRoomCollider;
 
+    public PaintingTransition paintingTransition; // can be null
+    public Transform camPosition;
+
+    public Vector2Int roomCoordinates;
+
+    public Camera roomCam;
+
     public bool doorTransitionEven { get; set; }
     public bool pictureTransitionEven { get; set; }
 
-    public void SetRoomNumber(int number)
+    public void SetRoomCoordinates(Vector2Int number)
     {
-        roomNumber.text = number.ToString();
+        roomCoordinates = number;
+        string[] dates = { "Past", "Present", "Future" };
+        
+        roomNumber.text = dates[number.y] + " - universe "+number.x.ToString();
     }
 
     public void OnTriggerEnter(Collider other)

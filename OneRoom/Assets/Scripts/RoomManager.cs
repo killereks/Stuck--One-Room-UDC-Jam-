@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public List<Room> rooms;
-    int currentRoomIndex;
+    List<List<Room>> rooms = new List<List<Room>>();
+
+    public List<Room> pastRooms;
+    public List<Room> presentRooms;
+    public List<Room> futureRooms;
+
+    Vector2Int currentRoomIndex;
 
     Room currentRoom;
-    Room nextRoom;
+
+    Room nextRoomDimension;
+    Room nextRoomTime;
 
     public Transform roomPosition, roomPositionMirrored;
+    public Transform roomPositionTimewarped, roomPositionMirroredTimewarped;
+    public Transform fakeTimePosition;
 
     public static RoomManager Instance;
-
 
 
     public void Awake()
@@ -23,11 +31,21 @@ public class RoomManager : MonoBehaviour
 
     public void Start()
     {
-        for (int i = 0; i < rooms.Count; i++)
+        rooms.Add(pastRooms);
+        rooms.Add(presentRooms);
+        rooms.Add(futureRooms);
+
+
+        for (int y = 0; y < rooms.Count; y++)
         {
-            rooms[i].SetRoomNumber(i);
-            rooms[i].gameObject.SetActive(false);
-            //also set position in the array
+            for (int x = 0; x < rooms[y].Count; x++)
+            {
+
+                rooms[x][y].SetRoomCoordinates(new Vector2Int(x,y));
+                rooms[x][y].gameObject.SetActive(false);
+                //also set position in the array
+            }
+
         }
 
         SetupFirstRoom();
@@ -35,51 +53,126 @@ public class RoomManager : MonoBehaviour
 
     public void SetupFirstRoom()
     {
-        currentRoomIndex = 0;
-        currentRoom = rooms[currentRoomIndex];
+        currentRoomIndex = Vector2Int.zero;
+        currentRoom = rooms[currentRoomIndex.x][currentRoomIndex.y];
         currentRoom.gameObject.SetActive(true);
-        currentRoom.transform.position = roomPosition.position;
-        currentRoom.transform.rotation = roomPosition.rotation;
+
         currentRoom.doorTransitionEven = true;
+        currentRoom.pictureTransitionEven = true;
+
+        PositionRoom(currentRoom);
+
         currentRoom.insideRoomCollider.enabled = false;
 
-        SetupNextRoom();
+        SetupNextRooms();
     }
 
-    public void ClosedInAnotherRoom()
+    public Room ClosedInAnotherRoom()
     {
         //
-        currentRoomIndex = (currentRoomIndex + 1) % rooms.Count; //replace with nextRoom index after you have the key
+        currentRoomIndex.x = (currentRoomIndex.x + 1) % rooms[currentRoomIndex.y].Count;
         Room roomToDeload = currentRoom;
-        currentRoom = nextRoom;
-        SetupNextRoom();
+        currentRoom = nextRoomDimension;
+
+        nextRoomTime.gameObject.SetActive(false);
+        SetupNextRooms();
 
         //unload current room
-        if(roomToDeload != nextRoom)
+        if(roomToDeload != nextRoomDimension)
         {
             roomToDeload.gameObject.SetActive(false);
         }
+
+        return currentRoom;
     }
 
-    public void SetupNextRoom()
+    public Room WentThroughPainting()
     {
-        int roomIndex = (currentRoomIndex + 1) % rooms.Count;
-        nextRoom = rooms[roomIndex];
-        nextRoom.gameObject.SetActive(true);
+        //
+        currentRoomIndex.y = (currentRoomIndex.y + 1) % rooms.Count;
+        Room roomToDeload = currentRoom;
+        currentRoom = nextRoomTime;
+        nextRoomDimension.gameObject.SetActive(false);
+        SetupNextRooms();
+
+        //unload current room
+        if (roomToDeload != nextRoomTime)
+        {
+            roomToDeload.gameObject.SetActive(false);
+        }
+
+        return currentRoom;
+    }
+
+    public void SetupNextRooms()
+    {
+        //setup 2 rooms -> 1 in each direction
+        Vector2Int roomIndexX = currentRoomIndex;
+        Vector2Int roomIndexY = currentRoomIndex;
+
+        roomIndexX.x = (currentRoomIndex.x + 1) % rooms[currentRoomIndex.y].Count;
+        roomIndexY.y = (currentRoomIndex.y + 1) % rooms.Count;
+
+        //spawn other dimension room
+        nextRoomDimension = rooms[roomIndexX.x][roomIndexX.y];
+        nextRoomDimension.gameObject.SetActive(true);
         
-        nextRoom.doorTransitionEven = !currentRoom.doorTransitionEven;
-        nextRoom.transform.position = nextRoom.doorTransitionEven ? roomPosition.position : roomPositionMirrored.position;
-        nextRoom.transform.rotation = nextRoom.doorTransitionEven ? roomPosition.rotation : roomPositionMirrored.rotation;
+        nextRoomDimension.doorTransitionEven = !currentRoom.doorTransitionEven;
+        nextRoomDimension.pictureTransitionEven = currentRoom.pictureTransitionEven;
 
-        nextRoom.insideRoomCollider.enabled = true;
+        PositionRoom(nextRoomDimension);
 
+        nextRoomDimension.insideRoomCollider.enabled = true;
+
+        //spawn other time room
+
+        nextRoomTime = rooms[roomIndexY.x][roomIndexY.y];
+        nextRoomTime.gameObject.SetActive(true);
+        
+
+        nextRoomTime.doorTransitionEven = currentRoom.doorTransitionEven;
+        nextRoomTime.pictureTransitionEven = !currentRoom.pictureTransitionEven;
+
+        PositionRoom(nextRoomTime);
+        
+
+        currentRoom.roomCam.transform.position = nextRoomTime.camPosition.position;
+
+        nextRoomTime.insideRoomCollider.enabled = false;
+
+        //PeekThroughTime();
     }
 
-    public Room GetNextRoom() 
+    public void PeekThroughTime()
     {
-        int roomIndex = (currentRoomIndex + 1) % rooms.Count;
+        Vector2Int coordinates = nextRoomTime.roomCoordinates;
+        coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
+        Room peekRoom = rooms[coordinates.x][coordinates.y];
 
-        return rooms[roomIndex];
+        peekRoom.transform.position = fakeTimePosition.position;
+        peekRoom.gameObject.SetActive(true);
+
+        //take a snapshot
+        currentRoom.paintingTransition.RenderImages();
+        nextRoomTime.paintingTransition.RenderImages();
+        peekRoom.paintingTransition.RenderImages();
+
+        peekRoom.gameObject.SetActive(false);
+    }
+
+    public void PositionRoom(Room room)
+    {
+        if (room.pictureTransitionEven)
+        {
+            room.transform.position = room.doorTransitionEven ? roomPosition.position : roomPositionMirrored.position;
+            room.transform.rotation = room.doorTransitionEven ? roomPosition.rotation : roomPositionMirrored.rotation;
+        }
+        else
+        {
+            room.transform.position = room.doorTransitionEven ? roomPositionTimewarped.position : roomPositionMirroredTimewarped.position;
+            room.transform.rotation = room.doorTransitionEven ? roomPositionTimewarped.rotation : roomPositionMirroredTimewarped.rotation;
+        }
+
     }
 
 }
