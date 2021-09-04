@@ -61,6 +61,7 @@ public class RoomManager : MonoBehaviour
         currentRoom.pictureTransitionEven = true;
 
         PositionRoom(currentRoom);
+        PlayerMovement.Instance.transform.position = currentRoom.camPosition.position;
 
         currentRoom.insideRoomCollider.enabled = false;
 
@@ -140,22 +141,26 @@ public class RoomManager : MonoBehaviour
 
         nextRoomTime.insideRoomCollider.enabled = false;
 
-        //PeekThroughTime();
+        PeekThroughTime();
     }
 
     public void PeekThroughTime()
     {
         Vector2Int coordinates = nextRoomTime.roomCoordinates;
-        coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
+        //coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
+        coordinates.y = (coordinates.y + 1) % rooms.Count;
         Room peekRoom = rooms[coordinates.x][coordinates.y];
 
         peekRoom.transform.position = fakeTimePosition.position;
         peekRoom.gameObject.SetActive(true);
 
+        peekRoom.roomCam.transform.position = currentRoom.camPosition.position;
+        nextRoomTime.roomCam.transform.position = peekRoom.camPosition.position;
+
         //take a snapshot
-        currentRoom.paintingTransition.RenderImages();
-        nextRoomTime.paintingTransition.RenderImages();
         peekRoom.paintingTransition.RenderImages();
+        nextRoomTime.paintingTransition.RenderImages();
+        currentRoom.paintingTransition.RenderImages();
 
         peekRoom.gameObject.SetActive(false);
     }
