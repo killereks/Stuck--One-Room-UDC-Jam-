@@ -146,7 +146,7 @@ public class RoomManager : MonoBehaviour
     public void PeekThroughTime()
     {
         Vector2Int coordinates = nextRoomTime.roomCoordinates;
-        coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
+        coordinates.y = (coordinates.y + 1) % rooms.Count;
         Room peekRoom = rooms[coordinates.x][coordinates.y];
 
         peekRoom.transform.position = fakeTimePosition.position;
