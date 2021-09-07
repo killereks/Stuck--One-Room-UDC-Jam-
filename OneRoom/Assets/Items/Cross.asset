@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cross
   m_EditorClassIdentifier: 
   name: Cross
-  icon: {fileID: 21300000, guid: 70141d51621e24facbca9196bbde84b4, type: 3}
+  icon: {fileID: 21300000, guid: c95734f4639d26b439873bb450cf4c87, type: 3}
   prefab: {fileID: 406006435202010275, guid: acd31059909079a4aae5e8f1b92b4d65, type: 3}

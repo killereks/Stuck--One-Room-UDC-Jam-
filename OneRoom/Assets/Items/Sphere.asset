@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sphere
   m_EditorClassIdentifier: 
   name: Sphere
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 335a1fd3bfb403540b09c605fadc48fb, type: 3}
   prefab: {fileID: 349496574322756550, guid: f1d4a7c9d882d1d4a97d71656d551b8d, type: 3}

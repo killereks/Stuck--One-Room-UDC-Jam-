@@ -141,3 +141,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherItem: {fileID: 11400000, guid: 1722c16ce475d5b479a3968d41e0cb9d, type: 2}
   outcome: {fileID: 406006435202010275, guid: acd31059909079a4aae5e8f1b92b4d65, type: 3}
+  destroyTargetOnUsage: 1

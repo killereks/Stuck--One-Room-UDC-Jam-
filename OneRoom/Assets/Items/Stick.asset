@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   name: Cloud
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 354c3007898a8d445b0a35cbf038f132, type: 3}
   prefab: {fileID: 349496574322756550, guid: 5cd74f3e610692041929ba1a7af18c2a, type: 3}
