@@ -24,7 +24,7 @@ public class Room : MonoBehaviour
         roomCoordinates = number;
         string[] dates = { "Past", "Present", "Future" };
         
-        roomNumber.text = dates[number.y] + " - universe "+number.x.ToString();
+        roomNumber.text = dates[number.x] + " - universe "+number.y.ToString();
     }
 
     public void OnTriggerEnter(Collider other)

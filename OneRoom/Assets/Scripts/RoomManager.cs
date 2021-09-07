@@ -39,18 +39,17 @@ public class RoomManager : MonoBehaviour
 
     public void Start()
     {
+        rooms.Clear();
         rooms.Add(pastRooms);
         rooms.Add(presentRooms);
         rooms.Add(futureRooms);
-
 
         for (int y = 0; y < rooms.Count; y++)
         {
             for (int x = 0; x < rooms[y].Count; x++)
             {
-
-                rooms[x][y].SetRoomCoordinates(new Vector2Int(x,y));
-                rooms[x][y].gameObject.SetActive(false);
+                rooms[y][x].SetRoomCoordinates(new Vector2Int(y,x));
+                rooms[y][x].gameObject.SetActive(false);
                 //also set position in the array
             }
 
@@ -63,7 +62,7 @@ public class RoomManager : MonoBehaviour
     {
         //currentRoomIndex = Vector2Int.zero;
         currentRoomIndex = startingRoomIndex;
-        currentRoom = rooms[currentRoomIndex.x][currentRoomIndex.y];
+        currentRoom = rooms[currentRoomIndex.y][currentRoomIndex.x];
         currentRoom.gameObject.SetActive(true);
 
         currentRoom.doorTransitionEven = true;
@@ -99,7 +98,7 @@ public class RoomManager : MonoBehaviour
     public Room WentThroughPainting()
     {
         //
-        currentRoomIndex.y = (currentRoomIndex.y + 1) % rooms.Count;
+        currentRoomIndex.y = ((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
         Room roomToDeload = currentRoom;
         currentRoom = nextRoomTime;
         nextRoomDimension.gameObject.SetActive(false);
@@ -121,10 +120,10 @@ public class RoomManager : MonoBehaviour
         Vector2Int roomIndexY = currentRoomIndex;
 
         roomIndexX.x = (currentRoomIndex.x + 1) % rooms[currentRoomIndex.y].Count;
-        roomIndexY.y = (currentRoomIndex.y + 1) % rooms.Count;
+        roomIndexY.y = ((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
 
         //spawn other dimension room
-        nextRoomDimension = rooms[roomIndexX.x][roomIndexX.y];
+        nextRoomDimension = rooms[roomIndexX.y][roomIndexX.x];
         nextRoomDimension.gameObject.SetActive(true);
         
         nextRoomDimension.doorTransitionEven = !currentRoom.doorTransitionEven;
@@ -136,7 +135,7 @@ public class RoomManager : MonoBehaviour
 
         //spawn other time room
 
-        nextRoomTime = rooms[roomIndexY.x][roomIndexY.y];
+        nextRoomTime = rooms[roomIndexY.y][roomIndexY.x];
         nextRoomTime.gameObject.SetActive(true);
         
 
@@ -157,8 +156,8 @@ public class RoomManager : MonoBehaviour
     {
         Vector2Int coordinates = nextRoomTime.roomCoordinates;
         //coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
-        coordinates.y = (coordinates.y + 1) % rooms.Count;
-        Room peekRoom = rooms[coordinates.x][coordinates.y];
+        coordinates.y = ((coordinates.y - 1) < 0) ? (rooms.Count - 1) : (coordinates.y - 1);
+        Room peekRoom = rooms[coordinates.y][coordinates.x];
 
         peekRoom.transform.position = fakeTimePosition.position;
         peekRoom.gameObject.SetActive(true);
