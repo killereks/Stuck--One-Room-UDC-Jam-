@@ -74,7 +74,6 @@ public class Door : MonoBehaviour, IInteractable {
     }
 
     public void Open(Vector3 pos){
-
         if (!isOpen){
             ToggleDoor(pos);
         }
