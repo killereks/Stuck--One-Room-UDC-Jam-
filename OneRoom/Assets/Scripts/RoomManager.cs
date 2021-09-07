@@ -22,8 +22,8 @@ public class RoomManager : MonoBehaviour
 
     Room currentRoom;
 
-    Room nextRoomDimension;
-    Room nextRoomTime;
+    public Room nextRoomDimension { get; set; }
+    public Room nextRoomTime { get; set; }
 
     public Transform roomPosition, roomPositionMirrored;
     public Transform roomPositionTimewarped, roomPositionMirroredTimewarped;
@@ -31,6 +31,7 @@ public class RoomManager : MonoBehaviour
 
     public static RoomManager Instance;
 
+    public Door door, doorTimewarped;
 
     public void Awake()
     {
@@ -70,7 +71,7 @@ public class RoomManager : MonoBehaviour
 
         PositionRoom(currentRoom);
         PlayerMovement.Instance.transform.position = currentRoom.camPosition.position;
-
+        PlayerMovement.Instance.currentRoom = currentRoom;
         currentRoom.insideRoomCollider.enabled = false;
 
         SetupNextRooms();
@@ -119,8 +120,8 @@ public class RoomManager : MonoBehaviour
         Vector2Int roomIndexX = currentRoomIndex;
         Vector2Int roomIndexY = currentRoomIndex;
 
-        roomIndexX.x = (currentRoomIndex.x + 1) % rooms[currentRoomIndex.y].Count;
-        roomIndexY.y = ((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
+        roomIndexX.x = (roomIndexX.x + 1) % rooms[roomIndexX.y].Count;
+        roomIndexY.y = ((roomIndexY.y - 1) < 0) ? (rooms.Count - 1) : (roomIndexY.y - 1);
 
         //spawn other dimension room
         nextRoomDimension = rooms[roomIndexX.y][roomIndexX.x];
@@ -143,7 +144,7 @@ public class RoomManager : MonoBehaviour
         nextRoomTime.pictureTransitionEven = !currentRoom.pictureTransitionEven;
 
         PositionRoom(nextRoomTime);
-        
+        Debug.Log((nextRoomTime != null) + " " + (nextRoomDimension != null));
 
         currentRoom.roomCam.transform.position = nextRoomTime.camPosition.position;
 

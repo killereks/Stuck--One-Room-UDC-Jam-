@@ -59,6 +59,8 @@ public class Door : MonoBehaviour, IInteractable {
     {
         isOpen = !isOpen;
 
+
+
         if (isOpen){
             Vector3 dir = (pos - transform.position);
             targetYRotation = -Mathf.Sign(Vector3.Dot(hinge.forward, dir)) * 90f;
@@ -70,6 +72,13 @@ public class Door : MonoBehaviour, IInteractable {
         }
         else{
             targetYRotation = 0f;
+
+            //TODO move this to the closed event
+            //check if player current room = room manager current room
+            if (PlayerMovement.Instance.currentRoom == RoomManager.Instance.nextRoomDimension)
+            {
+                RoomManager.Instance.ClosedInAnotherRoom();
+            }
         }
     }
 

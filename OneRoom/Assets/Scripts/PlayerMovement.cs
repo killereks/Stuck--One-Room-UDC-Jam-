@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 
     Rigidbody rb;
 
+    public Room currentRoom;
+
     [BoxGroup("Object Settings")]
     public Cinemachine.CinemachineVirtualCamera cam;
 
