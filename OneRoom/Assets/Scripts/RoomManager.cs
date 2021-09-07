@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class RoomManager : MonoBehaviour
 {
     List<List<Room>> rooms = new List<List<Room>>();
 
+    
+    [BoxGroup("Room Setup")]
     public List<Room> pastRooms;
+    [BoxGroup("Room Setup")]
     public List<Room> presentRooms;
+    [BoxGroup("Room Setup")]
     public List<Room> futureRooms;
 
     Vector2Int currentRoomIndex;
+
+    [BoxGroup("Settings")]
+    public Vector2Int startingRoomIndex;
 
     Room currentRoom;
 
@@ -53,7 +61,8 @@ public class RoomManager : MonoBehaviour
 
     public void SetupFirstRoom()
     {
-        currentRoomIndex = Vector2Int.zero;
+        //currentRoomIndex = Vector2Int.zero;
+        currentRoomIndex = startingRoomIndex;
         currentRoom = rooms[currentRoomIndex.x][currentRoomIndex.y];
         currentRoom.gameObject.SetActive(true);
 

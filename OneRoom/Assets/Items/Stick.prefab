@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 349496574322756544}
   - component: {fileID: 349496574322756551}
   - component: {fileID: 1312979924596810074}
+  - component: {fileID: 7991676116268861269}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,3 +127,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7991676116268861269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349496574322756550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9694f4f164971654da2dc076417491d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherItem: {fileID: 11400000, guid: 1722c16ce475d5b479a3968d41e0cb9d, type: 2}
+  outcome: {fileID: 406006435202010275, guid: acd31059909079a4aae5e8f1b92b4d65, type: 3}

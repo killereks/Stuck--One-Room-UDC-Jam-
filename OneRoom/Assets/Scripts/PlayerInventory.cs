@@ -32,8 +32,17 @@ public class PlayerInventory : MonoBehaviour {
         return false;
     }
 
+    public Item ItemInHand() {
+        return item;
+    }
+
     public bool IsFull() {
         return item != null;
+    }
+
+    public void RemoveItem() {
+        item = null;
+        UpdateUI();
     }
 
     public void UpdateUI() {

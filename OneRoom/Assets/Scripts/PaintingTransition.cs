@@ -12,8 +12,14 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
     MeshRenderer meshRenderer;
 
+    bool canUse;
+
     public void Interact() {
+        if (!canUse) return;
+
         vCam.Priority = 250;
+
+        canUse = false;
 
         Vector3 pos = linkedCam.transform.position;
         pos.y = PlayerMovement.Instance.cam.transform.position.y;
@@ -21,9 +27,15 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
         PlayerMovement.Instance.ToggleMovement(false);
 
+        LeanTween.value(0f, 1f, 1f).setOnUpdate((float value) => {
+            SetSaturation(value);
+        }).setDelay(0.1f).setOnComplete(() => SetSaturation(0f));
+
         LeanTween.delayedCall(1f, () => {
             RoomManager.Instance.WentThroughPainting();
             //Room room = RoomManager.Instance.WentThroughPainting();
+
+            canUse = true;
 
             vCam.Priority = 0;
             PlayerMovement player = PlayerMovement.Instance;
@@ -44,6 +56,10 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
         });
     }
 
+    void SetSaturation(float value) {
+        meshRenderer.material.SetFloat("_Saturation", value);
+    }
+
     private void OnValidate() {
         SetPaintingScale();
     }
@@ -53,6 +69,8 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
         SetPaintingScale();
         SnapCameraToCanvas();
+
+        canUse = true;
     }
 
     public void RenderImages() {
@@ -80,6 +98,9 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(meshRenderer.bounds.center, meshRenderer.bounds.size);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(meshRenderer.transform.position, meshRenderer.transform.position + meshRenderer.transform.forward);
     }
 
     void SnapCameraToCanvas() {
@@ -91,11 +112,15 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
         float z = canvasPos.z;
 
         float fov = vCam.m_Lens.FieldOfView / 2f;
-        float canvasHeight = meshRenderer.bounds.size.y;// * transform.lossyScale.y;
+        //float canvasHeight = meshRenderer.bounds.size.y;// * transform.lossyScale.y;
+        float canvasHeight = transform.lossyScale.y;
 
         float opposite = canvasHeight / 2f;
         float adjacent = opposite / Mathf.Tan(Mathf.Deg2Rad * fov);
-        vCam.transform.position = new Vector3(x, y, z) - vCam.transform.forward * adjacent;
+
+        vCam.transform.position = new Vector3(x, y, z);
+        vCam.transform.position -= meshRenderer.transform.forward * adjacent;
+
         vCam.m_Lens.FarClipPlane = Mathf.Ceil(adjacent);
     }
 
