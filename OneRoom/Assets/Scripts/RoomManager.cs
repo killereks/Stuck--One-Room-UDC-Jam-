@@ -49,6 +49,8 @@ public class RoomManager : MonoBehaviour
         {
             for (int x = 0; x < rooms[y].Count; x++)
             {
+                Debug.Log(y + " " + x);
+
                 rooms[y][x].SetRoomCoordinates(new Vector2Int(y,x));
                 rooms[y][x].gameObject.SetActive(false);
                 //also set position in the array
@@ -124,9 +126,11 @@ public class RoomManager : MonoBehaviour
         roomIndexY.y = (roomIndexY.y - 1 + rooms.Count) % rooms.Count; //((roomIndexY.y - 1) < 0) ? (rooms.Count - 1) : (roomIndexY.y - 1);
 
         //spawn other dimension room
+        
         nextRoomDimension = rooms[roomIndexX.y][roomIndexX.x];
         nextRoomDimension.gameObject.SetActive(true);
-        
+       // Debug.Log(roomIndexX);
+
         nextRoomDimension.doorTransitionEven = !currentRoom.doorTransitionEven;
         nextRoomDimension.pictureTransitionEven = currentRoom.pictureTransitionEven;
 
@@ -155,23 +159,27 @@ public class RoomManager : MonoBehaviour
 
     public void PeekThroughTime()
     {
-        Vector2Int coordinates = nextRoomTime.roomCoordinates;
-        //coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
-        coordinates.y = ((coordinates.y - 1) < 0) ? (rooms.Count - 1) : (coordinates.y - 1);
-        Room peekRoom = rooms[coordinates.y][coordinates.x];
-
-        peekRoom.transform.position = fakeTimePosition.position;
-        peekRoom.gameObject.SetActive(true);
-
-        peekRoom.roomCam.transform.position = currentRoom.camPosition.position;
-        nextRoomTime.roomCam.transform.position = peekRoom.camPosition.position;
-
-        //take a snapshot
-        peekRoom.paintingTransition.RenderImages();
-        nextRoomTime.paintingTransition.RenderImages();
         currentRoom.paintingTransition.RenderImages();
+        nextRoomTime.paintingTransition.RenderImages();
+        //won't be able to render the doorway properly
 
-        peekRoom.gameObject.SetActive(false);
+        /*        Vector2Int coordinates = nextRoomTime.roomCoordinates;
+                //coordinates.y = (currentRoomIndex.y + 1) % rooms.Count;
+                coordinates.y = ((coordinates.y - 1) < 0) ? (rooms.Count - 1) : (coordinates.y - 1);
+                Room peekRoom = rooms[coordinates.y][coordinates.x];
+
+                peekRoom.transform.position = fakeTimePosition.position;
+                peekRoom.gameObject.SetActive(true);
+
+                peekRoom.roomCam.transform.position = currentRoom.camPosition.position;
+                nextRoomTime.roomCam.transform.position = peekRoom.camPosition.position;
+
+                //take a snapshot
+                peekRoom.paintingTransition.RenderImages();
+                nextRoomTime.paintingTransition.RenderImages();
+                currentRoom.paintingTransition.RenderImages();
+
+                peekRoom.gameObject.SetActive(false);*/
     }
 
     public void PositionRoom(Room room)
