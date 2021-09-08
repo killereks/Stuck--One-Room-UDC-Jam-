@@ -9,6 +9,9 @@ public class FileSystem : MonoBehaviour {
 
     public static FileSystem instance;
 
+    public Sprite[] programmingMemes;
+    public Sprite[] mathMemes;
+
     private void Start() {
         instance = this;
 
@@ -36,7 +39,17 @@ public class FileSystem : MonoBehaviour {
 
         masterNode.CreateDirectory("C/Documents/Important Files");
 
-        //masterNode.AddFile("C/KiRoX/System Files", new ImageFileInfo("my image.png", ContextMenu.instance.backgroundIcon));
+        masterNode.CreateDirectory("C/Documents/Memes/Programming Memes");
+        masterNode.CreateDirectory("C/Documents/Memes/Math Memes");
+
+        for (int i = 0; i < programmingMemes.Length; i++) {
+            Sprite sprite = programmingMemes[i];
+            masterNode.AddFile("C/Documents/Memes/Programming Memes", new ImageFileInfo($"meme{i+1}.png", sprite));
+        }
+        for (int i = 0; i < mathMemes.Length; i++) {
+            Sprite sprite = mathMemes[i];
+            masterNode.AddFile("C/Documents/Memes/Math Memes", new ImageFileInfo($"funnymath{i + 1}.png", sprite));
+        }
         masterNode.AddFile("C/Documents", new TextFileInfo("Hello", "Hello"));
 
         //masterNode.AddFile("C/Documents", new ImageFileInfo("CoolPic", testSprite));

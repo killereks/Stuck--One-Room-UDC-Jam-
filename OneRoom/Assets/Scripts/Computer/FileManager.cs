@@ -11,6 +11,8 @@ public class FileManager : MonoBehaviour {
 
     [BoxGroup("Default Settings")]
     public Transform desktopFiles;
+    [BoxGroup("Default Settings")]
+    public Transform applicationParent;
 
     [BoxGroup("File Prefabs")]
     public GameObject folderPrefab;
@@ -18,6 +20,13 @@ public class FileManager : MonoBehaviour {
     public GameObject textFilePrefab;
     [BoxGroup("File Prefabs")]
     public GameObject imageFilePrefab;
+
+    [BoxGroup("File Opening")]
+    public GameObject textFileApplicationPrefab;
+    [BoxGroup("File Opening")]
+    public GameObject imageFileApplicationPrefab;
+    [BoxGroup("File Opening")]
+    public GameObject fileExplorer;
 
     private void Start() {
         instance = this;
@@ -28,21 +37,20 @@ public class FileManager : MonoBehaviour {
 
         textFile.GetComponentInChildren<TextMeshProUGUI>().text = file.name;
 
-        /*TextFile textFileObj = textFile.GetComponent<TextFile>();
-
-        textFileObj.fileInfo.SetName(file.GetName());
-        textFileObj.SetTextData(file.GetData());*/
+        textFile.GetComponent<Button>().onClick.AddListener(() => {
+            OpenTextFile(file);
+        });
     }
 
     public void NewImageFile(Transform parent, string fullPath, ImageFileInfo file) {
         GameObject imageFile = Instantiate(imageFilePrefab, parent);
 
+        imageFile.GetComponentInChildren<Image>().sprite = file.sprite;
         imageFile.GetComponentInChildren<TextMeshProUGUI>().text = file.name;
 
-        /*ImageFile imageFileObj = imageFile.GetComponent<ImageFile>();
-
-        imageFileObj.fileInfo.SetName(file.GetName());
-        imageFileObj.SetImageData(file.GetData());*/
+        imageFile.GetComponent<Button>().onClick.AddListener(() => {
+            OpenImageFile(file);
+        });
     }
 
     public void NewFolderFile(Transform parent, string folderName, string fullPath, UnityAction action) {
@@ -51,7 +59,28 @@ public class FileManager : MonoBehaviour {
         newFolderFile.GetComponentInChildren<TextMeshProUGUI>().text = folderName;
 
         newFolderFile.GetComponent<Button>().onClick.AddListener(() => action.Invoke());
+    }
 
-        /*Tools.FindDeepChild<TextMeshProUGUI>(newFolderFile, "Name").text = folderName;*/
+    public void OpenTextFile(TextFileInfo file) {
+        GameObject textViewer = Instantiate(textFileApplicationPrefab, applicationParent);
+
+        TextMeshProUGUI[] texts = textViewer.GetComponentsInChildren<TextMeshProUGUI>();
+
+        texts[0].text = file.name;
+        texts[1].text = file.content;
+    }
+
+    public void OpenImageFile(ImageFileInfo file) {
+        GameObject imageViewer = Instantiate(imageFileApplicationPrefab, applicationParent);
+
+        Image image = imageViewer.GetComponentInChildren<ScrollSize>().GetComponent<Image>();
+
+        imageViewer.GetComponentInChildren<TextMeshProUGUI>().text = file.name;
+
+        image.sprite = file.sprite;
+    }
+
+    public void OpenFileExplorer() {
+        Instantiate(fileExplorer, applicationParent);
     }
 }
