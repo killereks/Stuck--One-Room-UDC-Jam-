@@ -99,7 +99,7 @@ public class RoomManager : MonoBehaviour
     public Room WentThroughPainting()
     {
         //
-        currentRoomIndex.y = ((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
+        currentRoomIndex.y = (currentRoomIndex.y - 1 + rooms.Count) % rooms.Count;//((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
         Room roomToDeload = currentRoom;
         currentRoom = nextRoomTime;
         nextRoomDimension.gameObject.SetActive(false);
@@ -121,7 +121,7 @@ public class RoomManager : MonoBehaviour
         Vector2Int roomIndexY = currentRoomIndex;
 
         roomIndexX.x = (roomIndexX.x + 1) % rooms[roomIndexX.y].Count;
-        roomIndexY.y = ((roomIndexY.y - 1) < 0) ? (rooms.Count - 1) : (roomIndexY.y - 1);
+        roomIndexY.y = (roomIndexY.y - 1 + rooms.Count) % rooms.Count; //((roomIndexY.y - 1) < 0) ? (rooms.Count - 1) : (roomIndexY.y - 1);
 
         //spawn other dimension room
         nextRoomDimension = rooms[roomIndexX.y][roomIndexX.x];
