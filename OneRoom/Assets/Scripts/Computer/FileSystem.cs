@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 [System.Serializable]
@@ -31,10 +32,12 @@ public class FileSystem : MonoBehaviour {
         masterNode.CreateDirectory("C/KiRoX/System Files/DLLs/Assembly");
 
         for (int i = 0; i < 10; i++) {
-            masterNode.AddFile("C/KiRoX/System Files/DLLs", new TextFileInfo("somerandom.dll", "This is content but different"));
+            string code = GenerateRandomCode(Random.Range(100, 300));
+            masterNode.AddFile("C/KiRoX/System Files/DLLs", new TextFileInfo($"{RandomLetters(8)}.dll", code));
         }
         for (int i = 0; i < 6; i++) {
-            masterNode.AddFile("C/KiRoX/System Files/DLLs/Assembly", new TextFileInfo("somefile.dll", "Hello, this is content"));
+            string code = GenerateRandomCode(Random.Range(100, 300));
+            masterNode.AddFile("C/KiRoX/System Files/DLLs/Assembly", new TextFileInfo($"{RandomLetters(8)}.dll", code));
         }
 
         masterNode.CreateDirectory("C/Documents/Important Files");
@@ -53,5 +56,91 @@ public class FileSystem : MonoBehaviour {
         masterNode.AddFile("C/Documents", new TextFileInfo("Hello", "Hello"));
 
         //masterNode.AddFile("C/Documents", new ImageFileInfo("CoolPic", testSprite));
+    }
+
+    string GenerateRandomCode(int lines) {
+
+        StringBuilder outcome = new StringBuilder();
+
+        bool isLabel = false;
+
+        string[] labelNames = new string[] {"loop","start","interrupt","state","output",
+            "setupw1","setupw2","setupwdt","mainloop","userinput","user","input",
+            "counter","sum","again","lamp","loop_amp","betaop","random","code","master","directory","file","stream"};
+
+        void NewLineNumber(int lineNumber) {
+            outcome.Append(lineNumber).Append("\t").Append("<color=#3498db>|</color>").Append("\t");
+        }
+
+        string GetMemory() {
+            if (Random.value <= 0.7f) {
+                if (Random.value <= 0.8f) {
+                    return "e" + RandomLetters(1) + "x";
+                }
+                return "r" + Random.Range(1, 17);
+            }
+            return $"#{Random.Range(1, 1001)}";
+        }
+
+        for (int i = 0; i < lines; i++) {
+            int number = Random.Range(0, 8);
+
+            NewLineNumber(i);
+
+            if (isLabel) {
+                outcome.Append("\t");
+            }
+
+            switch (number) {
+                case 0:
+                    outcome.AppendLine($"<color=#4caf50>ADD</color>\t{GetMemory()},\t{GetMemory()},\t{GetMemory()}");
+                    break;
+                case 1:
+                    outcome.AppendLine($"<color=#4caf50>SUB</color>\t{GetMemory()},\t{GetMemory()},\t{GetMemory()}");
+                    break;
+                case 2:
+                    outcome.AppendLine($"<color=#3498DB>CMP</color>\t{GetMemory()},\t{GetMemory()}");
+                    NewLineNumber(i);
+                    outcome.AppendLine($"<color=#3498DB>BLT</color>\t{labelNames[Random.Range(0, labelNames.Length)]}");
+                    break;
+                case 3:
+                    outcome.AppendLine($"<color=#4caf50>ORR</color>\t{GetMemory()},\t{GetMemory()},\t{ GetMemory()}");
+                    break;
+                case 4:
+                    outcome.AppendLine($"<color=#9B59B6>LSL</color>\t{GetMemory()},\t{GetMemory()},\t{ GetMemory()}");
+                    break;
+                case 5:
+                    outcome.AppendLine($"<color=#9B59B6>LSR</color>\t{GetMemory()},\t{GetMemory()},\t{ GetMemory()}");
+                    break;
+                case 6:
+                    outcome.AppendLine($"<color=#4caf50>STR</color>\t{GetMemory()},\t{GetMemory()}");
+                    break;
+                case 7:
+                    if (isLabel) {
+                        isLabel = false;
+                        outcome.AppendLine();
+                        break;
+                    }
+                    outcome.AppendLine($"<color=#E67E22>{labelNames[Random.Range(0, labelNames.Length)]}:</color>");
+                    isLabel = true;
+                    break;
+            }
+        }
+        NewLineNumber(lines);
+        outcome.AppendLine("HLT");
+
+        return outcome.ToString();
+    }
+
+    string RandomLetters(int count) {
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < count; i++) {
+            stringBuilder.Append(alphabet[Random.Range(0, alphabet.Length)]);
+        }
+
+        return stringBuilder.ToString();
     }
 }
