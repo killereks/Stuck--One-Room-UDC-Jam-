@@ -33,11 +33,11 @@ public class FileSystem : MonoBehaviour {
 
         for (int i = 0; i < 10; i++) {
             string code = GenerateRandomCode(Random.Range(100, 300));
-            masterNode.AddFile("C/KiRoX/System Files/DLLs", new TextFileInfo($"{RandomLetters(8)}.dll", code));
+            masterNode.AddFile("C/KiRoX/System Files/DLLs", new TextFileInfo($"{RandomLetters(8)}.asm", code));
         }
         for (int i = 0; i < 6; i++) {
             string code = GenerateRandomCode(Random.Range(100, 300));
-            masterNode.AddFile("C/KiRoX/System Files/DLLs/Assembly", new TextFileInfo($"{RandomLetters(8)}.dll", code));
+            masterNode.AddFile("C/KiRoX/System Files/DLLs/Assembly", new TextFileInfo($"{RandomLetters(8)}.asm", code));
         }
 
         masterNode.CreateDirectory("C/Documents/Important Files");
