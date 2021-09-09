@@ -31,7 +31,7 @@ public class Room : MonoBehaviour
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
-            other.GetComponent<PlayerMovement>().currentRoom = this;
+            RoomManager.currentPlayerRoom = this;
         }
         
     }

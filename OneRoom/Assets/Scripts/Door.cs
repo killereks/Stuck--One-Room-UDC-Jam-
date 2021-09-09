@@ -92,7 +92,7 @@ public class Door : MonoBehaviour, IInteractable {
     }
 
     void DoorFullyClosedEvent() {
-        if (PlayerMovement.Instance.currentRoom == RoomManager.Instance.nextRoomDimension) {
+        if (RoomManager.currentPlayerRoom == RoomManager.Instance.nextRoomDimension) {
             RoomManager.Instance.ClosedInAnotherRoom();
         }
     }

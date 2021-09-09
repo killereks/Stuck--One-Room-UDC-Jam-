@@ -17,6 +17,8 @@ public class RoomManager : MonoBehaviour
 
     Vector2Int currentRoomIndex;
 
+    public static Room currentPlayerRoom;
+
     [BoxGroup("Settings")]
     public Vector2Int startingRoomIndex;
 
@@ -73,7 +75,7 @@ public class RoomManager : MonoBehaviour
 
         PositionRoom(currentRoom);
         PlayerMovement.Instance.transform.position = currentRoom.camPosition.position;
-        PlayerMovement.Instance.currentRoom = currentRoom;
+        currentPlayerRoom = currentRoom;
         currentRoom.insideRoomCollider.enabled = false;
 
         SetupNextRooms();
