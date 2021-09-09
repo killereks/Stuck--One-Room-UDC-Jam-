@@ -42,6 +42,11 @@ public class Door : MonoBehaviour, IInteractable {
         if (timer <= 0f && isOpen && autoClose){
             ToggleDoor(player.position);
         }
+
+        if(isOpen && Vector3.Distance(transform.position, player.transform.position) > 3f)
+        {
+            Close(player.position);
+        }
     }
 
     void OnDrawGizmosSelected(){

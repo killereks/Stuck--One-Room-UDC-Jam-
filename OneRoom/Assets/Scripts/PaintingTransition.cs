@@ -12,7 +12,7 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
     MeshRenderer meshRenderer;
 
-    bool canUse;
+    public bool canUse { get; set; }
 
     public void Interact() {
         if (!canUse) return;

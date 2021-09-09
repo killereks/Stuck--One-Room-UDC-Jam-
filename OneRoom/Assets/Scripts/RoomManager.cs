@@ -85,7 +85,7 @@ public class RoomManager : MonoBehaviour
         currentRoomIndex.x = (currentRoomIndex.x + 1) % rooms[currentRoomIndex.y].Count;
         Room roomToDeload = currentRoom;
         currentRoom = nextRoomDimension;
-
+        currentRoom.paintingTransition.canUse = true;
         nextRoomTime.gameObject.SetActive(false);
         SetupNextRooms();
 
@@ -137,6 +137,7 @@ public class RoomManager : MonoBehaviour
         PositionRoom(nextRoomDimension);
 
         nextRoomDimension.insideRoomCollider.enabled = true;
+        nextRoomDimension.paintingTransition.canUse = false;
 
         //spawn other time room
 
