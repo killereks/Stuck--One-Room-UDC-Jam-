@@ -28,6 +28,8 @@ public class FileManager : MonoBehaviour {
     [BoxGroup("File Opening")]
     public GameObject fileExplorer;
 
+    public Print printManager;
+
     private void Start() {
         instance = this;
     }
@@ -78,6 +80,10 @@ public class FileManager : MonoBehaviour {
         imageViewer.GetComponentInChildren<TextMeshProUGUI>().text = file.name;
 
         image.sprite = file.sprite;
+
+        imageViewer.transform.Find("PrintButton").GetComponent<Button>().onClick.AddListener(() => {
+            printManager.PrintImage(file.sprite);
+        });
     }
 
     public void OpenFileExplorer() {

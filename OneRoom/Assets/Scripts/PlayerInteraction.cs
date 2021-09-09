@@ -20,7 +20,11 @@ public class PlayerInteraction : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        InteractionRay();
+        if (PickupController.instance.currentlyHoldingItem() && Input.GetKeyDown(KeyCode.F)) {
+            PickupController.instance.Letgo();
+        } else {
+            InteractionRay();
+        }
     }
 
     void InteractionRay() {
@@ -41,6 +45,9 @@ public class PlayerInteraction : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) {
                     interactable.Interact();
                 }
+            } else if (hit.collider.CompareTag("Pickupable") && Input.GetKeyDown(KeyCode.E)) {
+                print("pickup");
+                PickupController.instance.Pickup(hit.collider.gameObject);
             }
         }
 
