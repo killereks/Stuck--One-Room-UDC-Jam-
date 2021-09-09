@@ -17747,7 +17747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712475644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.49, y: 1.75, z: 22.91}
+  m_LocalPosition: {x: -0.8, y: 1.75, z: 0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 980580619}
@@ -32880,7 +32880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.49, y: 2.5, z: 22.91}
+  m_LocalPosition: {x: -0.8, y: 2.5, z: 0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35673,13 +35673,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885544096}
-  m_LocalRotation: {x: 0.5894448, y: 0.39058053, z: 0.3905819, w: 0.5894467}
+  m_LocalRotation: {x: 0.626105, y: 0.32861963, z: 0.3286208, w: 0.62610704}
   m_LocalPosition: {x: 1.474, y: 1.232, z: -3.071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 22.941, y: 90, z: 90}
+  m_LocalEulerAnglesHint: {x: 34.613, y: 90, z: 90}
 --- !u!114 &1885544099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36336,198 +36336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: monitor
       objectReference: {fileID: 0}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.size
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 33ff401162fd00e4e9b03ba6ab277fed, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: aec72caefc3a9b244b03e496d2fcc10a, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: d5931b452495d424da4f9e5037825f21, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 1ca2a6ebc1e944640abe36c295ebfc67, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: f66a5efff39667946a408c9e0279fc70, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8964e86e4cb3e544b9ec40448cdb0eb7, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[6]
-      value: 
-      objectReference: {fileID: 21300000, guid: 092462e62ce45ae4cb65d96ae69eced4, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[7]
-      value: 
-      objectReference: {fileID: 21300000, guid: c1cf7019b005d054491111fa73ecdb90, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[8]
-      value: 
-      objectReference: {fileID: 21300000, guid: 856e516735661df49848540cb4b24bff, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[9]
-      value: 
-      objectReference: {fileID: 21300000, guid: 70b1f3a66679d2646abaa73241017efb, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[10]
-      value: 
-      objectReference: {fileID: 21300000, guid: ed79c71b49224b143be0367d1fcf8c80, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[11]
-      value: 
-      objectReference: {fileID: 21300000, guid: e2ab359fc0e424d4bb8c0f66c6cb113f, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[12]
-      value: 
-      objectReference: {fileID: 21300000, guid: aa247af30a6646149be54c725854bba3, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[13]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8df6ffa8c03e37d40a1e5776717b7f38, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[14]
-      value: 
-      objectReference: {fileID: 21300000, guid: f4dabc627d313e24897823efbdeec275, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[15]
-      value: 
-      objectReference: {fileID: 21300000, guid: 5401484ff17f75248a21e38b62480e2b, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[16]
-      value: 
-      objectReference: {fileID: 21300000, guid: c85a41eb929103d4297ac4b25e854759, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[17]
-      value: 
-      objectReference: {fileID: 21300000, guid: ec8498a8d265fca4e9a15f628425c1d2, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: memes.Array.data[18]
-      value: 
-      objectReference: {fileID: 21300000, guid: cb53d86750a1d7347b3861a24e990ee9, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 1ca2a6ebc1e944640abe36c295ebfc67, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: f66a5efff39667946a408c9e0279fc70, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 7a11accab7493c64095bc4e109770ae8, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 092462e62ce45ae4cb65d96ae69eced4, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 876befb1ca3970b48978b24775040ede, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: 4d4c8b951174400449c17fb694c9037d, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[6]
-      value: 
-      objectReference: {fileID: 21300000, guid: 33a34364b2ae72249a27f581ca9961d7, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[7]
-      value: 
-      objectReference: {fileID: 21300000, guid: f235ea42115c50746ae55e0d35dd6b2d, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[8]
-      value: 
-      objectReference: {fileID: 21300000, guid: b6741d92303b10c4d9faf9a5487a7042, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: mathMemes.Array.data[9]
-      value: 
-      objectReference: {fileID: 21300000, guid: bcda53b8b10f42541a2d0ee28e56f6cb, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: cb53d86750a1d7347b3861a24e990ee9, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 33ff401162fd00e4e9b03ba6ab277fed, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: aec72caefc3a9b244b03e496d2fcc10a, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: d5931b452495d424da4f9e5037825f21, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8964e86e4cb3e544b9ec40448cdb0eb7, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: c1cf7019b005d054491111fa73ecdb90, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[6]
-      value: 
-      objectReference: {fileID: 21300000, guid: 856e516735661df49848540cb4b24bff, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[7]
-      value: 
-      objectReference: {fileID: 21300000, guid: 70b1f3a66679d2646abaa73241017efb, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[8]
-      value: 
-      objectReference: {fileID: 21300000, guid: ed79c71b49224b143be0367d1fcf8c80, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[9]
-      value: 
-      objectReference: {fileID: 21300000, guid: e2ab359fc0e424d4bb8c0f66c6cb113f, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[10]
-      value: 
-      objectReference: {fileID: 21300000, guid: aa247af30a6646149be54c725854bba3, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[11]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8df6ffa8c03e37d40a1e5776717b7f38, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[12]
-      value: 
-      objectReference: {fileID: 21300000, guid: f4dabc627d313e24897823efbdeec275, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[13]
-      value: 
-      objectReference: {fileID: 21300000, guid: 5401484ff17f75248a21e38b62480e2b, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[14]
-      value: 
-      objectReference: {fileID: 21300000, guid: c85a41eb929103d4297ac4b25e854759, type: 3}
-    - target: {fileID: 125343213831571225, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: programmingMemes.Array.data[15]
-      value: 
-      objectReference: {fileID: 21300000, guid: ec8498a8d265fca4e9a15f628425c1d2, type: 3}
     - target: {fileID: 789992858565189039, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -36570,30 +36378,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 789992858565189039, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3630813495205809628, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3630813495245601797, guid: b11c6232a7bb9704ea0652e88fd64e0c, type: 3}

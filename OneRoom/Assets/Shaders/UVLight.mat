@@ -49,6 +49,6 @@ Material:
     m_Colors:
     - Vector3_3d11f80c93ac407b9bfdb58b7b2c48ba: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.007843138, g: 0.5686275, b: 0.7803922, a: 1}
-    - _LightDirection: {r: -0.9209058, g: 0.38978526, b: -0.0000033080578, a: 0}
+    - _LightDirection: {r: -0.82300436, g: 0.568035, b: -0.00000333786, a: 0}
     - _LightPosition: {r: 1.474, g: 1.232, b: -3.071, a: 0}
   m_BuildTextureStacks: []

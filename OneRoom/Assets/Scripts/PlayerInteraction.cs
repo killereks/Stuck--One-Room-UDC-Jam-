@@ -38,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour {
             if (interactable != null) {
                 hitSomething = true;
                 // USE INPUT MANAGER
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)) {
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) {
                     interactable.Interact();
                 }
             }

@@ -12,6 +12,7 @@ public class FileSystem : MonoBehaviour {
 
     public Sprite[] programmingMemes;
     public Sprite[] mathMemes;
+    public Sprite[] nonsenseMemes;
 
     private void Start() {
         instance = this;
@@ -40,18 +41,21 @@ public class FileSystem : MonoBehaviour {
             masterNode.AddFile("C/KiRoX/System Files/DLLs/Assembly", new TextFileInfo($"{RandomLetters(8)}.asm", code));
         }
 
-        masterNode.CreateDirectory("C/Documents/Important Files");
-
-        masterNode.CreateDirectory("C/Documents/Memes/Programming Memes");
-        masterNode.CreateDirectory("C/Documents/Memes/Math Memes");
+        masterNode.CreateDirectory("C/Documents/Important Files/Memes/Programming Memes");
+        masterNode.CreateDirectory("C/Documents/Important Files/Memes/Math Memes");
+        masterNode.CreateDirectory("C/Documents/Important Files/Memes/carrot");
 
         for (int i = 0; i < programmingMemes.Length; i++) {
             Sprite sprite = programmingMemes[i];
-            masterNode.AddFile("C/Documents/Memes/Programming Memes", new ImageFileInfo($"meme{i+1}.png", sprite));
+            masterNode.AddFile("C/Documents/Important Files/Memes/Programming Memes", new ImageFileInfo($"meme{i+1}.png", sprite));
         }
         for (int i = 0; i < mathMemes.Length; i++) {
             Sprite sprite = mathMemes[i];
-            masterNode.AddFile("C/Documents/Memes/Math Memes", new ImageFileInfo($"funnymath{i + 1}.png", sprite));
+            masterNode.AddFile("C/Documents/Important Files/Memes/Math Memes", new ImageFileInfo($"funnymath{i + 1}.png", sprite));
+        }
+        for (int i = 0; i < nonsenseMemes.Length; i++) {
+            Sprite sprite = nonsenseMemes[i];
+            masterNode.AddFile("C/Documents/Important Files/Memes/carrot", new ImageFileInfo($"mmee{i + 1}.png", sprite));
         }
         masterNode.AddFile("C/Documents", new TextFileInfo("Hello", "Hello"));
 
