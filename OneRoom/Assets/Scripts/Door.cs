@@ -29,6 +29,8 @@ public class Door : MonoBehaviour, IInteractable {
     float timer = 0f;
     Vector3 defaultRot;
 
+    LTDescr closedDoorDesc;
+
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player").transform;
         defaultRot = hinge.eulerAngles;
@@ -64,7 +66,9 @@ public class Door : MonoBehaviour, IInteractable {
     {
         isOpen = !isOpen;
 
-
+        if (closedDoorDesc != null) {
+            LeanTween.cancel(closedDoorDesc.id);
+        }
 
         if (isOpen){
             Vector3 dir = (pos - transform.position);
@@ -78,12 +82,18 @@ public class Door : MonoBehaviour, IInteractable {
         else{
             targetYRotation = 0f;
 
+            closedDoorDesc = LeanTween.delayedCall(0.2f, () => {
+                DoorFullyClosedEvent();
+            });
+
             //TODO move this to the closed event
             //check if player current room = room manager current room
-            if (PlayerMovement.Instance.currentRoom == RoomManager.Instance.nextRoomDimension)
-            {
-                RoomManager.Instance.ClosedInAnotherRoom();
-            }
+        }
+    }
+
+    void DoorFullyClosedEvent() {
+        if (PlayerMovement.Instance.currentRoom == RoomManager.Instance.nextRoomDimension) {
+            RoomManager.Instance.ClosedInAnotherRoom();
         }
     }
 
