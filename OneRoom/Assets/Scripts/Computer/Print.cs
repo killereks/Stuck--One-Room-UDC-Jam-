@@ -1,11 +1,19 @@
+using System.Collections;
 using UnityEngine;
 
 public class Print : MonoBehaviour {
 
     public GameObject paperPrefab;
+    public Transform paperPosition;
+
+    bool currentlyPrinting;
 
     public void PrintImage(Sprite image) {
-        GameObject newPaper = Instantiate(paperPrefab, transform.position + Vector3.up, Quaternion.identity);
+        if (currentlyPrinting) return;
+
+        currentlyPrinting = true;
+
+        GameObject newPaper = Instantiate(paperPrefab, paperPosition.position, paperPosition.rotation);
 
         Texture2D texture = new Texture2D((int)image.rect.width, (int)image.rect.height);
         var pixels = image.texture.GetPixels((int)image.textureRect.x,
@@ -17,5 +25,22 @@ public class Print : MonoBehaviour {
         texture.Apply();
 
         newPaper.GetComponent<MeshRenderer>().material.mainTexture = texture;
+
+        StartCoroutine(AnimatePrinting(newPaper));
+    }
+
+    IEnumerator AnimatePrinting(GameObject paper) {
+        Vector3 offset = Vector3.left * 0.3f;
+
+        int iterations = 10;
+
+        for (int i = 0; i < iterations; i++) {
+            LeanTween.move(paper, paper.transform.position + offset / iterations, 0.3f).setEaseInOutSine();
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        LeanTween.move(paper, paper.transform.position + offset / iterations * 2f, 0.3f).setEaseInOutSine();
+
+        currentlyPrinting = false;
     }
 }
