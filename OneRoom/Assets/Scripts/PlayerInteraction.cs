@@ -20,11 +20,12 @@ public class PlayerInteraction : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        if (PickupController.instance.currentlyHoldingItem() && Input.GetKeyDown(KeyCode.F)) {
+        /*if (PickupController.instance.currentlyHoldingItem() && Input.GetKeyDown(KeyCode.F)) {
             PickupController.instance.Letgo();
         } else {
-            InteractionRay();
-        }
+            
+        }*/
+        InteractionRay();
     }
 
     void InteractionRay() {

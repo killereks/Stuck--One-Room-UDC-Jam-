@@ -12,6 +12,11 @@ public class PlayerInventory : MonoBehaviour {
     GameObject placeItem = null;
     Bounds placeItemBounds;
 
+    public GameObject flashLight;
+    public GameObject whiskey;
+
+    public AudioSource itemAudioSource;
+
     private void Start() {
         instance = this;
 
@@ -26,6 +31,7 @@ public class PlayerInventory : MonoBehaviour {
     public bool PickupItem(Item itemToPickUp) {
         if (item == null) {
             item = itemToPickUp;
+            itemAudioSource.PlayOneShot(itemToPickUp.pickupSound);
             UpdateUI();
             return true;
         }
@@ -51,6 +57,9 @@ public class PlayerInventory : MonoBehaviour {
         if (item != null) {
             itemIconImage.sprite = item.icon;
         }
+
+        flashLight.SetActive(item != null && item.name == "Flashlight");
+        whiskey.SetActive(item != null && item.name == "Whiskey");
     }
 
     public void Update() {
@@ -61,6 +70,10 @@ public class PlayerInventory : MonoBehaviour {
                 placeItem.layer = 2;
                 item = null;
                 UpdateUI();
+
+                if (placeItem.GetComponent<Rigidbody>()) {
+                    placeItem.GetComponent<Rigidbody>().isKinematic = true;
+                }
             }
         }
 
@@ -77,6 +90,10 @@ public class PlayerInventory : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.Q)) {
             if (placeItem != null) {
+                if (placeItem.GetComponent<Rigidbody>()) {
+                    placeItem.GetComponent<Rigidbody>().isKinematic = false;
+                }
+
                 placeItem.layer = 1;
                 placeItem = null;
             }

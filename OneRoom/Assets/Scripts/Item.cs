@@ -8,4 +8,5 @@ public class Item : ScriptableObject {
 
     public GameObject prefab;
 
+    public AudioClip pickupSound;
 }
