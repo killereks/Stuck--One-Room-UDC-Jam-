@@ -57,6 +57,8 @@ public class ScreenshotEditor : Editor {
 
         if (GUILayout.Button("Take Screenshot")) {
             screenshot.TakePicture();
+
+            screenshot.fileName = "";
         }
     }
 
