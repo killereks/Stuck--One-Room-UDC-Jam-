@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 7174076292955090214}
   - component: {fileID: 7174076292955089624}
   - component: {fileID: 7174076292955089625}
+  - component: {fileID: 4499963750630943664}
+  - component: {fileID: 3731613106552288144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,6 +144,41 @@ MonoBehaviour:
   cam: {fileID: 0}
   interactionDistance: 2
   interactionCrosshair: {fileID: 0}
+--- !u!114 &4499963750630943664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174076292955090212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0180d66127f6834a9fa4cd43867d945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceInFront: 1
+  minDropDistance: 2
+  maxThrowSpeed: 10
+  followSpeed: 20
+  pickupDelay: 1
+  rotationSmooth: 10
+--- !u!114 &3731613106552288144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174076292955090212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f3b4536eb4e80408940b8a19cadad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemIconImage: {fileID: 0}
+  flashLight: {fileID: 0}
+  whiskey: {fileID: 0}
+  itemAudioSource: {fileID: 0}
 --- !u!1 &7174076293223700434
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7174076293223700434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7174076292662412095}

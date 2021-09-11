@@ -11,7 +11,6 @@ public class ItemWorld : MonoBehaviour, IInteractable {
 
     public void Interact() {
         if (PlayerInventory.instance.PickupItem(item)) {
-            LeanTween.scale(gameObject, Vector3.zero, 0.2f).setEaseInOutSine();
             Destroy(gameObject);
         } else if (puzzleCraft != null) {
             puzzleCraft.AttemptCraft();

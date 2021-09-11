@@ -223,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4230442150022591861
 Transform:
   m_ObjectHideFlags: 0
@@ -2586,7 +2586,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4579454407841743219, guid: 7e79fb650cd4e8849b4a872750a0b20e, type: 3}
 --- !u!1 &9194784646804757801
@@ -3466,23 +3466,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99727035
+      value: 0.9972704
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.009867401
+      value: 0.0098674
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07317062
+      value: -0.07317061
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0007239799
+      value: 0.0007239797
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.1337787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 351.60736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.000000013342825
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254936462306, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4229168
+      value: 1.4235295
       objectReference: {fileID: 0}
     - target: {fileID: 2273710255096167189, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalPosition.x
