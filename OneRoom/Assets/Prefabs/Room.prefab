@@ -844,6 +844,7 @@ MonoBehaviour:
   insideRoomCollider: {fileID: 604744876162071639}
   paintingTransition: {fileID: 8971408200230919002}
   camPosition: {fileID: 8372524355262440098}
+  itemParent: {fileID: 2218623958396629181}
   roomCoordinates: {x: 0, y: 0}
   roomCam: {fileID: 8971408200054584225}
 --- !u!65 &604744876162071639
@@ -3481,7 +3482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254936462306, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4203078
+      value: 1.4229168
       objectReference: {fileID: 0}
     - target: {fileID: 2273710255096167189, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalPosition.x

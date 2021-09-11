@@ -7,10 +7,11 @@ public class Room : MonoBehaviour
     public Vector2Int roomPosition; 
     public Transform doorTransform;
     public TextMeshProUGUI roomNumber;
-    public Collider insideRoomCollider;
+    public BoxCollider insideRoomCollider;
 
     public PaintingTransition paintingTransition; // can be null
     public Transform camPosition;
+    public Transform itemParent;
 
     public Vector2Int roomCoordinates;
 
@@ -34,6 +35,15 @@ public class Room : MonoBehaviour
             RoomManager.currentPlayerRoom = this;
         }
         
+    }
+
+    public void ParentPickupsToRoom()
+    {
+        foreach(Collider collider in Physics.OverlapBox(insideRoomCollider.transform.position, insideRoomCollider.size * 0.5f))
+        {
+            if (collider.tag == "Pickupable") collider.transform.SetParent(itemParent);
+
+        }
     }
 
     //4 positions
