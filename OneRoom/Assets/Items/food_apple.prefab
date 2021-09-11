@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5796423727200711584}
   - component: {fileID: 7484651894204185605}
   - component: {fileID: 4628051664479078607}
-  - component: {fileID: 8655747069589447235}
   - component: {fileID: 6573804134196177179}
   - component: {fileID: 5178125384451518043}
+  - component: {fileID: 8565314701638146674}
   m_Layer: 0
   m_Name: food_apple
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573804134196177178}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 199.239, y: 1.0761061, z: -14.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8655747069589447235
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6573804134196177178}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1176287247918716507, guid: 68060d9d38fd0914e8de101a63c0fc34, type: 3}
 --- !u!114 &6573804134196177179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8565314701638146674
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573804134196177178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.051130075
+  m_Center: {x: -0.00087462924, y: 0.043359715, z: 0.0006679818}

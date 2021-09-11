@@ -1,10 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cauldron : MonoBehaviour, IInteractable {
-
-    [ColorUsage(true, true)]
-    public Color color;
 
     public Transform liquidT;
     public Transform spoonT;
@@ -21,12 +20,15 @@ public class Cauldron : MonoBehaviour, IInteractable {
 
     List<Color> colors = new List<Color>();
 
+
+    public List<Ingredient> ingredients = new List<Ingredient>();
+
+    public UnityEvent onComplete;
+
     private void Start() {
-        colors.Add(color);
-        UpdateColor();
-    }
-    private void OnValidate() {
-        liquidMaterial.SetColor("_Color", color);
+        liquidMaterial.SetColor("_Color", Color.black);
+
+        canInteract = true;
     }
 
     public void MixColor(Color color) {
@@ -39,8 +41,6 @@ public class Cauldron : MonoBehaviour, IInteractable {
     }
 
     void UpdateColor() {
-        canInteract = false;
-
         Vector3 colorAverage = Vector3.zero;
 
         for (int i = 0; i < colors.Count; i++) {
@@ -65,35 +65,53 @@ public class Cauldron : MonoBehaviour, IInteractable {
         });
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.R)) {
-            MixColor(Color.red);
-        }
-        if (Input.GetKeyDown(KeyCode.G)) {
-            MixColor(Color.green);
-        }
-        if (Input.GetKeyDown(KeyCode.B)) {
-            MixColor(Color.blue);
-        }
-
-    }
-
     public void Interact() {
         if (!canInteract) return;
 
-        MixColor(Color.red);
+        Item item = PlayerInventory.instance.ItemInHand();
+        // no item in hand
+        if (item == null) return;
+
+        Ingredient ingredient = ingredients.Find(x => x.item == item);
+
+        // invalid ingredient
+        if (ingredient == null) return;
+
+        AddIngredient(ingredient);
+        ingredients.Remove(ingredient);
+
+        if (ingredients.Count == 0) onComplete.Invoke();
+
+        canInteract = false;
+
+        PlayerInventory.instance.RemoveItem();
+
+        LeanTween.delayedCall(2f, () => {
+            MixColor(ingredient.color);
+        });
     }
 
-    // 0 -> 0
-    // 0.5 -> 1
-    // 1 -> 0
+    private void AddIngredient(Ingredient ingredient) {
+        GameObject ingredientGO = Instantiate(ingredient.item.prefab, transform.position + Vector3.up * 1f, Quaternion.identity);
 
-    // 0 -> 0
-    // pi/2 -> 1
+        Destroy(ingredientGO.GetComponent<ItemWorld>());
 
-    public float SineDecay(float value) {
-        value = Mathf.Clamp01(value);
+        ingredientGO.tag = "Buoyancy";
+        buoyancyLogic bLogic = ingredientGO.AddComponent<buoyancyLogic>();
 
-        return Mathf.Sin(value * Mathf.PI);
+        bLogic.viscosity = 1f;
+        bLogic.force = 500f;
+
+        ingredientGO.GetComponent<Rigidbody>().AddForce(UnityEngine.Random.onUnitSphere, ForceMode.Impulse);
+
+        LeanTween.scale(ingredientGO, Vector3.zero, 4f).setDelay(2f).setOnComplete(() => {
+            Destroy(ingredientGO);
+        });
+    }
+
+    [System.Serializable]
+    public class Ingredient {
+        public Item item;
+        public Color color;
     }
 }

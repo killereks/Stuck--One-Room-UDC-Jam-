@@ -23,21 +23,22 @@ public class buoyancyLogic : MonoBehaviour {
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
+        /*Gizmos.color = Color.red;
         foreach (Vector3 vertex in meshFilter.sharedMesh.vertices) {
             Vector3 worldVertex = transform.TransformPoint(vertex);
 
             Gizmos.DrawRay(worldVertex, Vector3.up);
-        }
+        }*/
     }
 
     private void FixedUpdate() {
         if (water != null) {
             if (transform.position.y < water.position.y) {
-                //rb.AddForce(Vector3.up * ( water.position.y - transform.position.y ) * force);
-                //rb.AddForce(rb.velocity * -viscosity);
+                rb.AddForce(Vector3.up * ( water.position.y - transform.position.y ) * force);
+                rb.AddForce(rb.velocity * -viscosity);
 
-                foreach (Vector3 vertex in meshFilter.sharedMesh.vertices) {
+                // per vertex
+                /*foreach (Vector3 vertex in meshFilter.sharedMesh.vertices) {
                     Vector3 worldVertex = transform.TransformPoint(vertex);
                     // it is above water, ignore
                     if (worldVertex.y > water.position.y) {
@@ -45,7 +46,7 @@ public class buoyancyLogic : MonoBehaviour {
                     }
 
                     rb.AddForceAtPosition(Vector3.up * (water.position.y - worldVertex.y) * force, worldVertex);
-                }
+                }*/
                 rb.AddForce(rb.velocity * -viscosity);
             }
         }
@@ -54,8 +55,18 @@ public class buoyancyLogic : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Buoyancy")) {
             water = other.transform;
-            transform.parent = water;
-            transform.localScale = defaultScale;
+
+            /*transform.localScale = new Vector3(transform.localScale.x / water.localScale.x,
+                                               transform.localScale.y / water.localScale.y,
+                                               transform.localScale.z / water.localScale.z);
+            transform.parent = water;*/
+
+            Vector3 tempScale = transform.localScale;
+
+            transform.SetParent(water, true);
+
+            transform.localScale = tempScale;
+            //transform.localScale = defaultScale;
         }
     }
     private void OnTriggerExit(Collider other) {
