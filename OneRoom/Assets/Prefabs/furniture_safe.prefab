@@ -401,8 +401,8 @@ GameObject:
   - component: {fileID: 1927252893956893061}
   - component: {fileID: 3247414046070924832}
   - component: {fileID: 789773255391777514}
-  - component: {fileID: 2104380828151287366}
   - component: {fileID: 2104380828151287391}
+  - component: {fileID: 3201551738083249576}
   m_Layer: 0
   m_Name: furniture_safe
   m_TagString: Untagged
@@ -474,19 +474,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2104380828151287366
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293987640941785919}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0064660786, y: 0.0064660776, z: 0.0064660776}
-  m_Center: {x: -9.313226e-10, y: 0, z: 0.0032330388}
 --- !u!114 &2104380828151287391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +489,20 @@ MonoBehaviour:
   correctCode: 123456
   door: {fileID: 3717454425812150966}
   displayText: {fileID: 2104380827538471541}
+--- !u!64 &3201551738083249576
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293987640941785919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6723878429397911487, guid: 33f954d950539624fbe9d2a67749d38e, type: 3}
 --- !u!1 &1980892009798584395
 GameObject:
   m_ObjectHideFlags: 0
