@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2d9358ba3b769489beefccb6178819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 4
+  walkingSpeed: 2
   gravityScale: 2
   playerT: {fileID: 7174076292955090213}
   cam: {fileID: 7174076293223700436}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
