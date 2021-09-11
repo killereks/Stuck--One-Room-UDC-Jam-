@@ -1999,7 +1999,8 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 3.4028235e+38
     collisionSphereDistance: 3.4028235e+38
-  m_CapsuleColliders: []
+  m_CapsuleColliders:
+  - {fileID: 7174076292955090214, guid: efc2c04654233d24c9d0edbb34240def, type: 3}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0.01
   m_SelfCollisionStiffness: 0.2
@@ -4060,7 +4061,8 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 3.4028235e+38
     collisionSphereDistance: 3.4028235e+38
-  m_CapsuleColliders: []
+  m_CapsuleColliders:
+  - {fileID: 7174076292955090214, guid: efc2c04654233d24c9d0edbb34240def, type: 3}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0.01
   m_SelfCollisionStiffness: 0.2
