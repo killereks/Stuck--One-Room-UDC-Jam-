@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35c8fbab344d494b94325530a9505b1, type: 3}
+  m_Name: ExampleProfile
+  m_EditorClassIdentifier: 
+  blueprints:
+  - type: CustomVolumetricLight
+    serializedSettings: '{"enabled":true,"distance":25.0,"stepCount":20,"brightnessMultiplier":2.0,"color":{"r":0.40566039085388186,"g":0.40566039085388186,"b":0.40566039085388186,"a":0.0}}'
