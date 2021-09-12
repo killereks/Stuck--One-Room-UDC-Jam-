@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7d51315cab53f041b78c402a4b19b54
+guid: 4895b0228d5d36f4ba67a39349aa9af1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: wood
-    second: {fileID: 2100000, guid: 3eea265c2583e5a4b916a1e092a250bf, type: 2}
+      name: darkwood
+    second: {fileID: 2100000, guid: 10ae6dd0e3f34004e91118ecc4e38198, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: earth
+    second: {fileID: 2100000, guid: 702751a881025f94e8df9362ae6ab580, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greentree
+    second: {fileID: 2100000, guid: 75e7373836d4557498c822c40d55fee5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,7 +51,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -50,7 +60,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
