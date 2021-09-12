@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour {
     public AudioSource footstepSource;
     public AudioClip[] footstepClips;
 
+    public AudioSource transitionSound;
+
     bool canMove;
 
     Collider collider;

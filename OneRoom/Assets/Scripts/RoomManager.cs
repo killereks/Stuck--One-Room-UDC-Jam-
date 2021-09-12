@@ -88,14 +88,14 @@ public class RoomManager : MonoBehaviour
         Room roomToDeload = currentRoom;
         currentRoom = nextRoomDimension;
         //currentRoom.paintingTransition.canUse = true;
-        //nextRoomTime.ParentPickupsToRoom();
+        nextRoomTime.ParentPickupsToRoom();
         nextRoomTime.gameObject.SetActive(false);
         SetupNextRooms();
 
         //unload current room
         if(roomToDeload != nextRoomDimension)
         {
-            //roomToDeload.ParentPickupsToRoom();
+            roomToDeload.ParentPickupsToRoom();
             roomToDeload.gameObject.SetActive(false);
         }
 
@@ -108,14 +108,14 @@ public class RoomManager : MonoBehaviour
         currentRoomIndex.y = (currentRoomIndex.y - 1 + rooms.Count) % rooms.Count;//((currentRoomIndex.y - 1) < 0) ? (rooms.Count - 1) : (currentRoomIndex.y - 1);
         Room roomToDeload = currentRoom;
         currentRoom = nextRoomTime;
-        //nextRoomDimension.ParentPickupsToRoom();
+        nextRoomDimension.ParentPickupsToRoom();
         nextRoomDimension.gameObject.SetActive(false);
         SetupNextRooms();
 
         //unload current room
         if (roomToDeload != nextRoomTime)
         {
-            //roomToDeload.ParentPickupsToRoom();
+            roomToDeload.ParentPickupsToRoom();
             roomToDeload.gameObject.SetActive(false);
         }
 

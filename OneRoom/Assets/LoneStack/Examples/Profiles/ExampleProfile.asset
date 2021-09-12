@@ -15,3 +15,5 @@ MonoBehaviour:
   blueprints:
   - type: CustomVolumetricLight
     serializedSettings: '{"enabled":true,"distance":100.0,"stepCount":1000,"brightnessMultiplier":2.0,"color":{"r":1.0,"g":1.0,"b":1.0,"a":0.0}}'
+  - type: RadialBlur
+    serializedSettings: '{"enabled":true,"intensity":0.0,"iterations":10,"noise":0.0,"offset":0.0,"shape":0.5}'

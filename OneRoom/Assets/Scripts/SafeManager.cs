@@ -11,6 +11,10 @@ public class SafeManager : MonoBehaviour {
     public Transform door;
     public TextMeshPro displayText;
 
+    public AudioSource audioSource;
+    public AudioClip buttonPressClip;
+    public AudioClip deniedClip;
+
     bool isOpen;
 
     private void Start() {
@@ -19,6 +23,8 @@ public class SafeManager : MonoBehaviour {
 
     public void InsertCode(char character) {
         if (isOpen) return;
+
+        audioSource.PlayOneShot(buttonPressClip, 0.05f);
 
         if (character == '*') {
             if (currentCode.Length > 0) {
@@ -32,6 +38,7 @@ public class SafeManager : MonoBehaviour {
                 isOpen = true;
             } else {
                 // alarm noise - wrong code
+                audioSource.PlayOneShot(deniedClip);
                 Clear();
             }
         } else {
@@ -40,6 +47,7 @@ public class SafeManager : MonoBehaviour {
             } else {
                 // trying to input too many characters
                 // beep noise
+                audioSource.PlayOneShot(deniedClip);
             }
         }
 

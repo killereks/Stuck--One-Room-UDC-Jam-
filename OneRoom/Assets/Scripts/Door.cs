@@ -37,11 +37,11 @@ public class Door : MonoBehaviour, IInteractable {
 
     private void Start(){
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        defaultRot = hinge.eulerAngles;
+        defaultRot = hinge.localEulerAngles;
     }
 
     private void Update(){
-        hinge.rotation = Quaternion.Lerp(hinge.rotation, Quaternion.Euler(defaultRot.x, defaultRot.y + targetYRotation, defaultRot.z), smooth * Time.deltaTime);
+        hinge.localRotation = Quaternion.Lerp(hinge.localRotation, Quaternion.Euler(defaultRot.x, defaultRot.y + targetYRotation, defaultRot.z), smooth * Time.deltaTime);
 
         timer -= Time.deltaTime;
 

@@ -26,24 +26,25 @@ public class Room : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        ItemWorld item = other.GetComponent<ItemWorld>();
-
-        if (item != null) {
-            item.transform.SetParent(itemParent);
-        }
-
         if(other.GetComponent<PlayerMovement>() != null)
         {
             RoomManager.currentPlayerRoom = this;
         }
-        
     }
 
     public void ParentPickupsToRoom()
     {
-        foreach(Collider collider in Physics.OverlapBox(insideRoomCollider.transform.position, insideRoomCollider.size * 0.5f))
+
+        Vector3 worldCenter = insideRoomCollider.transform.TransformPoint(insideRoomCollider.center);
+        Vector3 worldHalfExtents = insideRoomCollider.transform.TransformVector(insideRoomCollider.size * 0.5f);
+
+        foreach (Collider collider in Physics.OverlapBox(worldCenter, worldHalfExtents))
         {
-            if (collider.CompareTag("Pickupable")) collider.transform.SetParent(itemParent);
+            ItemWorld item = collider.GetComponent<ItemWorld>();
+            
+            if (item != null) {
+                item.transform.SetParent(itemParent, true);
+            }
 
         }
     }

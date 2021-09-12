@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
+using LoneStack;
 
 public class PaintingTransition : MonoBehaviour, IInteractable {
 
     public Camera linkedCam;
 
+    public Cinemachine.CinemachineVirtualCamera vCamBefore;
     public Cinemachine.CinemachineVirtualCamera vCam;
 
     [Range(0,3)]
@@ -12,12 +16,22 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
     MeshRenderer meshRenderer;
 
+    LSVolume lsVolume;
+    RadialBlur radialBlur;
+
     public bool canUse { get; set; }
+
+    private void Awake() {
+        lsVolume = FindObjectOfType<LSVolume>();
+
+        radialBlur = lsVolume.FindEffect<RadialBlur>();
+    }
 
     public void Interact() {
         if (!canUse) return;
 
-        vCam.Priority = 250;
+        vCamBefore.Priority = 250;
+
 
         canUse = false;
 
@@ -27,11 +41,24 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
         PlayerMovement.Instance.ToggleMovement(false);
 
-        LeanTween.value(0f, 1f, 1f).setOnUpdate((float value) => {
+        PlayerMovement.Instance.transitionSound.Play();
+
+        LeanTween.value(0f, 1f, 2f).setOnUpdate((float value) => {
             SetSaturation(value);
         }).setDelay(0.1f).setOnComplete(() => SetSaturation(0f));
 
-        LeanTween.delayedCall(1f, () => {
+        LeanTween.value(0f, 2f, 1f).setDelay(1.5f).setEaseInOutBounce().setOnUpdate((float value) => {
+            radialBlur.settings.intensity = value;
+        }).setLoopPingPong(1);
+
+        LeanTween.value(120f, Camera.main.fieldOfView, 2f).setEaseInBounce().setOnUpdate((float value) => {
+            vCam.m_Lens.FieldOfView = value;
+
+            vCamBefore.Priority = 0;
+            vCam.Priority = 250;
+        });
+
+        LeanTween.delayedCall(2f, () => {
             RoomManager.Instance.WentThroughPainting();
             //Room room = RoomManager.Instance.WentThroughPainting();
 

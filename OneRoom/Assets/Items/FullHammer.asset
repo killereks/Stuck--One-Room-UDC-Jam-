@@ -15,4 +15,4 @@ MonoBehaviour:
   name: FullHammer
   icon: {fileID: 21300000, guid: cd0ccbe0c51cc7e47b4ff3efa33cac35, type: 3}
   prefab: {fileID: 5504267806283089722, guid: 98d19e6a6532f054682ce50c77397c24, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bee644f56ceef74d80eb406af90c5e2, type: 3}

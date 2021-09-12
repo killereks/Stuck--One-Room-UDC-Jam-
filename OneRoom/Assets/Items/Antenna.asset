@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Antena
   icon: {fileID: 21300000, guid: 861edc60b00d6814c9ffc0bb097af49c, type: 3}
   prefab: {fileID: 2527273848326890963, guid: a04d5f5545671754f9a9535e3b90eca0, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bee644f56ceef74d80eb406af90c5e2, type: 3}

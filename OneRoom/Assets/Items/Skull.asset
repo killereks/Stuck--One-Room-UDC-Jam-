@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Skull
   icon: {fileID: 21300000, guid: 985f99952acff934fbc1dda3475528fe, type: 3}
   prefab: {fileID: 8819315944772806455, guid: 07212df19d779bb4392756e73e21e4b3, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 189330c2f9bb4c64d9a1409bb4c411bb, type: 3}

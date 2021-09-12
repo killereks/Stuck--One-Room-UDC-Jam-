@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Apple
   icon: {fileID: 21300000, guid: 7fd6655efdf981f4fa49d92c000a8c0a, type: 3}
   prefab: {fileID: 6573804134196177178, guid: 0de22341596ea9547bc423afce1fb9f9, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bee644f56ceef74d80eb406af90c5e2, type: 3}

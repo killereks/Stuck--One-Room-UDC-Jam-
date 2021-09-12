@@ -15,4 +15,4 @@ MonoBehaviour:
   name: hammer
   icon: {fileID: 21300000, guid: ea1455b036a207f4d8019d7301a3666e, type: 3}
   prefab: {fileID: 273500109722149135, guid: 2c94f101061aa804ab10b0fb9d1ec319, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bee644f56ceef74d80eb406af90c5e2, type: 3}

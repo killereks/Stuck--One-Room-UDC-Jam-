@@ -15,4 +15,4 @@ MonoBehaviour:
   name: VCR
   icon: {fileID: 21300000, guid: 9ea51de5546fe1c48b308fcb0528795e, type: 3}
   prefab: {fileID: 4293235818841255561, guid: e2d5734eff8543f4b96ce326881daf93, type: 3}
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bee644f56ceef74d80eb406af90c5e2, type: 3}
