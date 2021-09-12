@@ -2009,6 +2009,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 276df447fa7607c4582ba582ce42afa1, type: 3}
   - {fileID: 21300000, guid: e4dccc5d61122c14f85b0d51de538b4d, type: 3}
   - {fileID: 21300000, guid: ad9334f34f24ffb4b8d5dc90459f32a3, type: 3}
+  puzzleImages:
+  - {fileID: 21300000, guid: ce9d2c53beafc3849a9a87a601a4a3b1, type: 3}
+  - {fileID: 21300000, guid: d54872e61b15eb54b91406e62dbe197d, type: 3}
+  - {fileID: 21300000, guid: 1da619863d9eed545a10bc6d48905744, type: 3}
+  - {fileID: 21300000, guid: 3c70e954fdc9d17488dd7cf6fe42fea3, type: 3}
+  - {fileID: 21300000, guid: 2e8f6b07c2634f24e8c824e80e716dd5, type: 3}
 --- !u!114 &1227836333
 MonoBehaviour:
   m_ObjectHideFlags: 0

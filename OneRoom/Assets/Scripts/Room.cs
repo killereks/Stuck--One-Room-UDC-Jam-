@@ -6,7 +6,6 @@ public class Room : MonoBehaviour
 {
     public Vector2Int roomPosition; 
     public Transform doorTransform;
-    public TextMeshProUGUI roomNumber;
     public BoxCollider insideRoomCollider;
 
     public PaintingTransition paintingTransition; // can be null
@@ -23,13 +22,16 @@ public class Room : MonoBehaviour
     public void SetRoomCoordinates(Vector2Int number)
     {
         roomCoordinates = number;
-        string[] dates = { "Past", "Present", "Future" };
-        
-        roomNumber.text = dates[number.x] + " - universe "+number.y.ToString();
     }
 
     public void OnTriggerEnter(Collider other)
     {
+        ItemWorld item = other.GetComponent<ItemWorld>();
+
+        if (item != null) {
+            item.transform.SetParent(itemParent);
+        }
+
         if(other.GetComponent<PlayerMovement>() != null)
         {
             RoomManager.currentPlayerRoom = this;
@@ -41,7 +43,7 @@ public class Room : MonoBehaviour
     {
         foreach(Collider collider in Physics.OverlapBox(insideRoomCollider.transform.position, insideRoomCollider.size * 0.5f))
         {
-            if (collider.tag == "Pickupable") collider.transform.SetParent(itemParent);
+            if (collider.CompareTag("Pickupable")) collider.transform.SetParent(itemParent);
 
         }
     }

@@ -16,6 +16,10 @@ public class Door : MonoBehaviour, IInteractable {
     [BoxGroup("Settings")]
     public bool invertOpeningDir;
 
+    public AudioSource audioSource;
+    public AudioClip openClip;
+    public AudioClip closeClip;
+
     Transform player;
 
     bool isOpen;
@@ -65,6 +69,12 @@ public class Door : MonoBehaviour, IInteractable {
     public void ToggleDoor(Vector3 pos)
     {
         isOpen = !isOpen;
+
+        if (IsOpen) {
+            audioSource.PlayOneShot(openClip);
+        } else {
+            audioSource.PlayOneShot(closeClip);
+        }
 
         if (closedDoorDesc != null) {
             LeanTween.cancel(closedDoorDesc.id);

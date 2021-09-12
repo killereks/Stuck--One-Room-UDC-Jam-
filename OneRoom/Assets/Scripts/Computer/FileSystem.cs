@@ -14,6 +14,8 @@ public class FileSystem : MonoBehaviour {
     public Sprite[] mathMemes;
     public Sprite[] nonsenseMemes;
 
+    public Sprite[] puzzleImages;
+
     private void Start() {
         instance = this;
 
@@ -32,6 +34,14 @@ public class FileSystem : MonoBehaviour {
         masterNode.CreateDirectory("C/KiRoX/System Files/System32");
         masterNode.CreateDirectory("C/KiRoX/System Files/DLLs/Assembly");
 
+        for (int i = 0; i < 24; i++) {
+            string code = GenerateRandomCode(Random.Range(100, 300));
+            masterNode.AddFile("C/KiRoX/System Files/System32", new TextFileInfo($"{RandomLetters(8)}.asm", code));
+        }
+        for (int i = 0; i < 6; i++) {
+            string code = GenerateRandomCode(Random.Range(100, 300));
+            masterNode.AddFile("C/KiRoX/System Files/System", new TextFileInfo($"{RandomLetters(8)}.asm", code));
+        }
         for (int i = 0; i < 10; i++) {
             string code = GenerateRandomCode(Random.Range(100, 300));
             masterNode.AddFile("C/KiRoX/System Files/DLLs", new TextFileInfo($"{RandomLetters(8)}.asm", code));
@@ -44,6 +54,7 @@ public class FileSystem : MonoBehaviour {
         masterNode.CreateDirectory("C/Documents/Important Files/Memes/Programming Memes");
         masterNode.CreateDirectory("C/Documents/Important Files/Memes/Math Memes");
         masterNode.CreateDirectory("C/Documents/Important Files/Memes/carrot");
+        masterNode.CreateDirectory("C/Documents/Important Files/Secret");
 
         for (int i = 0; i < programmingMemes.Length; i++) {
             Sprite sprite = programmingMemes[i];
@@ -57,7 +68,10 @@ public class FileSystem : MonoBehaviour {
             Sprite sprite = nonsenseMemes[i];
             masterNode.AddFile("C/Documents/Important Files/Memes/carrot", new ImageFileInfo($"mmee{i + 1}.png", sprite));
         }
-        masterNode.AddFile("C/Documents", new TextFileInfo("Hello", "Hello"));
+        for (int i = 0; i < puzzleImages.Length; i++) {
+            Sprite sprite = puzzleImages[i];
+            masterNode.AddFile("C/Documents/Important Files/Secret", new ImageFileInfo($"hieroglyph{i + 1}.png", sprite));
+        }
 
         //masterNode.AddFile("C/Documents", new ImageFileInfo("CoolPic", testSprite));
     }

@@ -44,10 +44,10 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
             Vector3 targetPos = linkedCam.transform.position; //room.camPosition.position;
 
-            Ray ray = new Ray(player.transform.position + Vector3.up * 2f, Vector3.down);
+            /*Ray ray = new Ray(player.transform.position + Vector3.up * 1f, Vector3.down);
             if (Physics.Raycast(ray, out RaycastHit hit)) {
                 targetPos.y = hit.point.y + 0.8f;
-            }
+            }*/
 
             targetPos.y = 1.182f;
 
@@ -81,6 +81,8 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
         meshRenderer = GetComponent<MeshRenderer>();
 
         linkedCam.enabled = true;
+
+        linkedCam.transform.position = new Vector3(linkedCam.transform.position.x, 1.782f, linkedCam.transform.position.z);
 
         RenderTexture renderTexture = new RenderTexture(1920, 1080, 16, RenderTextureFormat.ARGB32);
 

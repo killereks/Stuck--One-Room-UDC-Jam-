@@ -155,7 +155,6 @@ public class RoomManager : MonoBehaviour
         nextRoomTime.pictureTransitionEven = !currentRoom.pictureTransitionEven;
 
         PositionRoom(nextRoomTime);
-        Debug.Log((nextRoomTime != null) + " " + (nextRoomDimension != null));
 
         currentRoom.roomCam.transform.position = nextRoomTime.camPosition.position;
 
@@ -166,8 +165,12 @@ public class RoomManager : MonoBehaviour
 
     public void PeekThroughTime()
     {
-        currentRoom.paintingTransition.RenderImages();
+        //currentRoom.paintingTransition.RenderImages();
+        //nextRoomTime.paintingTransition.RenderImages();
+
         nextRoomTime.paintingTransition.RenderImages();
+        currentRoom.paintingTransition.RenderImages();
+
         //won't be able to render the doorway properly
 
         /*        Vector2Int coordinates = nextRoomTime.roomCoordinates;

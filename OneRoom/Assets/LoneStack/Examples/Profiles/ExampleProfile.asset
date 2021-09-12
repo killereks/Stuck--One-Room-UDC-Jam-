@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprints:
   - type: CustomVolumetricLight
-    serializedSettings: '{"enabled":false,"distance":100.0,"stepCount":1000,"brightnessMultiplier":2.0,"color":{"r":1.0,"g":1.0,"b":1.0,"a":0.0}}'
+    serializedSettings: '{"enabled":true,"distance":100.0,"stepCount":1000,"brightnessMultiplier":2.0,"color":{"r":1.0,"g":1.0,"b":1.0,"a":0.0}}'

@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour {
     [BoxGroup("Camera Settings")]
     public float mouseSens = 2f;
 
+    public AudioSource footstepSource;
+    public AudioClip[] footstepClips;
+
     bool canMove;
 
     Collider collider;
@@ -122,6 +125,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (footstepTime >= footstepInterval) {
             footstepTime = 0f;
+            footstepSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
             //footstepManager.PlayFootstepSound();
             //footstepAudioSource.PlayOneShot(footstepSounds[Random.Range(0, footstepSounds.Length)]);
         }

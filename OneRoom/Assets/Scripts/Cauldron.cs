@@ -59,6 +59,8 @@ public class Cauldron : MonoBehaviour, IInteractable {
         }).setOnComplete(() => {
             canInteract = true;
 
+            if (ingredients.Count == 0) onComplete.Invoke();
+
             liquidMaterial.SetFloat("_SwirlPower", 0f);
 
             lastColor = outcomeColor;
@@ -79,8 +81,6 @@ public class Cauldron : MonoBehaviour, IInteractable {
 
         AddIngredient(ingredient);
         ingredients.Remove(ingredient);
-
-        if (ingredients.Count == 0) onComplete.Invoke();
 
         canInteract = false;
 
@@ -104,7 +104,7 @@ public class Cauldron : MonoBehaviour, IInteractable {
 
         ingredientGO.GetComponent<Rigidbody>().AddForce(UnityEngine.Random.onUnitSphere, ForceMode.Impulse);
 
-        LeanTween.scale(ingredientGO, Vector3.zero, 4f).setDelay(2f).setOnComplete(() => {
+        LeanTween.scale(ingredientGO, Vector3.zero, 2f).setDelay(2f).setOnComplete(() => {
             Destroy(ingredientGO);
         });
     }
