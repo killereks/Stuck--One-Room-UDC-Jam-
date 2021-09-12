@@ -44,9 +44,13 @@ public class PaintingTransition : MonoBehaviour, IInteractable {
 
             Vector3 targetPos = linkedCam.transform.position; //room.camPosition.position;
 
-            if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit)) {
-                targetPos.y = hit.point.y + 0.9f;
+            Ray ray = new Ray(player.transform.position + Vector3.up * 2f, Vector3.down);
+            if (Physics.Raycast(ray, out RaycastHit hit)) {
+                targetPos.y = hit.point.y + 0.8f;
             }
+
+            targetPos.y = 1.182f;
+
             player.transform.position = targetPos;
 
             player.cam.transform.rotation = linkedCam.transform.rotation;

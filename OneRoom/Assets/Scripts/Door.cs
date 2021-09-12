@@ -82,7 +82,7 @@ public class Door : MonoBehaviour, IInteractable {
         else{
             targetYRotation = 0f;
 
-            closedDoorDesc = LeanTween.delayedCall(0.2f, () => {
+            closedDoorDesc = LeanTween.delayedCall(0.3f, () => {
                 DoorFullyClosedEvent();
             });
 

@@ -2041,7 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9145e117e69f7b3478908d8ed15db7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paperPrefab: {fileID: 5140053035686625627, guid: ecaf60766744a2349acdecf80517dbd8, type: 3}
+  paperPrefab: {fileID: 115785035775971215, guid: 01f2ded5f9a8b544badcabe2451440c0, type: 3}
+  paperPosition: {fileID: 0}
 --- !u!1 &215069676110547721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90.313, y: 90.002, z: 89.998}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.00028}
+  m_AnchoredPosition: {x: 0, y: -0.00044}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3630813495245601797

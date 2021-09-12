@@ -26,8 +26,8 @@ public class CanvasAnimation : MonoBehaviour, IInteractable {
         canvasScaler = canvas.GetComponent<CanvasScaler>();
 
         defaultSize = canvasRect.sizeDelta;
-        defaultPos = canvasRect.position;
-        defaultRot = canvasRect.rotation;
+        defaultPos = canvasRect.localPosition;
+        defaultRot = canvasRect.localRotation;
         defaultScale = canvasRect.localScale;
 
         SnapCameraToCanvas();
@@ -101,8 +101,8 @@ public class CanvasAnimation : MonoBehaviour, IInteractable {
 
     void ResetTransform() {
         canvasRect.sizeDelta = defaultSize;
-        canvasRect.position = defaultPos;
-        canvasRect.rotation = defaultRot;
+        canvasRect.localPosition = defaultPos;
+        canvasRect.localRotation = defaultRot;
         canvasRect.localScale = defaultScale;
     }
 

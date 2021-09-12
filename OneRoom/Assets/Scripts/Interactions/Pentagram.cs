@@ -27,6 +27,8 @@ public class Pentagram : MonoBehaviour, IInteractable {
             skulls.Add(Instantiate(skullPrefab, finalPos, Quaternion.LookRotation(-new Vector3(dx, 0f, dz))));
 
             skulls[i].SetActive(false);
+            skulls[i].transform.SetParent(transform);
+            Destroy(skulls[i].GetComponent<Rigidbody>());
             Destroy(skulls[i].GetComponent<ItemWorld>());
         }
     }

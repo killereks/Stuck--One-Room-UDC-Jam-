@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e14660f083c30c945bb78897ea4a14f8, type: 3}
-  m_Name: hammer
+  m_Name: FullHammer
   m_EditorClassIdentifier: 
-  name: hammer
-  icon: {fileID: 21300000, guid: ea1455b036a207f4d8019d7301a3666e, type: 3}
-  prefab: {fileID: 273500109722149135, guid: 2c94f101061aa804ab10b0fb9d1ec319, type: 3}
+  name: FullHammer
+  icon: {fileID: 21300000, guid: cd0ccbe0c51cc7e47b4ff3efa33cac35, type: 3}
+  prefab: {fileID: 5504267806283089722, guid: 98d19e6a6532f054682ce50c77397c24, type: 3}
   pickupSound: {fileID: 0}
