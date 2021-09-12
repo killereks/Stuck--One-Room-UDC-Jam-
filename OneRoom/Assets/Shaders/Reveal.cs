@@ -12,6 +12,6 @@ public class Reveal : MonoBehaviour
         Mat.SetVector("_LightPosition",  SpotLight.transform.position);
         Mat.SetVector("_LightDirection", -SpotLight.transform.forward );
         Mat.SetFloat("_LightAngle", SpotLight.innerSpotAngle);
-        Mat.SetColor("_Color", SpotLight.color);
+        //Mat.SetColor("_Color", SpotLight.color);
     }//Update() end
 }//class end

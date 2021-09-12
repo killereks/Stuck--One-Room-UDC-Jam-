@@ -34,7 +34,7 @@ Material:
     - MyStrengthScalor: 50
     - _Contrast: 50
     - _Glossiness: 0.5
-    - _LightAngle: 60
+    - _LightAngle: 90
     - _Metallic: 0
     - _Range: 10
     - _SpotAngle: 60
@@ -43,7 +43,7 @@ Material:
     - MyColor: {r: 1, g: 1, b: 1, a: 1}
     - MyLightDirection: {r: -0, g: 1.0000001, b: 0.00000011920929, a: 0}
     - MyLightPosition: {r: 3.057, g: 1.4994273, b: -3.039, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _LightDirection: {r: -0, g: 1.0000001, b: 0.00000011920929, a: 0}
-    - _LightPosition: {r: 2.331, g: 1.4994273, b: -3.039, a: 0}
+    - _Color: {r: 0, g: 0.5152774, b: 1, a: 1}
+    - _LightDirection: {r: -0.42396268, g: 0.75548047, b: 0.4995045, a: 0}
+    - _LightPosition: {r: -27.650043, g: 1.4071114, b: -2.025012, a: 0}
   m_BuildTextureStacks: []

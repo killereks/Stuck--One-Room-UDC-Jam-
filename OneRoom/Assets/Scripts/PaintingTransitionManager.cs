@@ -12,6 +12,12 @@ public class PaintingTransitionManager : MonoBehaviour {
         instance = this;
 
         UpdateAllPaintings();
+
+        LeanTween.delayedCall(2f, () => {
+            foreach (PaintingTransition paintingTransition in paintingTransitions) {
+                paintingTransition.enabled = true;
+            }
+        });
     }
 
     public void UpdateAllPaintings() {
