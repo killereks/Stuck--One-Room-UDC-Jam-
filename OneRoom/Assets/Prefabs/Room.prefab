@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259296542490358143}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -170,7 +170,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545029965829270561}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -1583,7 +1583,7 @@ GameObject:
   - component: {fileID: 6530839077634074606}
   - component: {fileID: 7858192145974388811}
   - component: {fileID: 5397880085418187905}
-  - component: {fileID: 2267860832236780591}
+  - component: {fileID: 7759349831072936028}
   m_Layer: 0
   m_Name: furniture_cupboard
   m_TagString: Untagged
@@ -1657,8 +1657,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2267860832236780591
-BoxCollider:
+--- !u!64 &7759349831072936028
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1667,9 +1667,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9809445, y: 1.8, z: 0.45530766}
-  m_Center: {x: 0, y: 0.9, z: 0.0028714098}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1943091296934966989, guid: fe1235af7e9e48b4d9a6874daed36b45, type: 3}
 --- !u!65 &4055617370374519419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3359,6 +3360,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaintingTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 2049799392162659546, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049799392162659546, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0000003874302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049799392162659546, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000017695129
+      objectReference: {fileID: 0}
     - target: {fileID: 2273710254575899203, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.12821156
@@ -3393,7 +3406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254936462306, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.96042866
+      value: 0.9600721
       objectReference: {fileID: 0}
     - target: {fileID: 2273710254936462306, guid: 63918eabcc2ca644d8a35a0e9cbc96ad, type: 3}
       propertyPath: m_LocalScale.y
