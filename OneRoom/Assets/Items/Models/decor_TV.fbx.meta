@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 6f72fe18bbf702048ac1353c63550c97
+guid: 1bd35b3d83f8f2e4794e3392188ffac2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 36baa83727f817d42b87e1495f20f943, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -46,7 +41,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
