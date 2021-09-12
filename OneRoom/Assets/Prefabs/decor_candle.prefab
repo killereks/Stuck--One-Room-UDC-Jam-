@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a5ce94d69b0d740b2194027544b0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemRequired: {fileID: 11400000, guid: 22c85d7c3e6f5e440a913c43f824e572, type: 2}
+  itemRequired: {fileID: 11400000, guid: f8d48e152e05b864d828731dcfacd5f2, type: 2}
   removeItemAfterUse: 0
   outcome:
     m_PersistentCalls:
@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2473847370016701441
 Transform:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8565413568659874967}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
