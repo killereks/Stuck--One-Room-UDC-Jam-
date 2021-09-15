@@ -6,6 +6,8 @@ public class Print : MonoBehaviour {
     public GameObject paperPrefab;
     public Transform paperPosition;
 
+    public Transform printerT;
+
     bool currentlyPrinting;
 
     public void PrintImage(Sprite image) {
@@ -14,6 +16,8 @@ public class Print : MonoBehaviour {
         currentlyPrinting = true;
 
         GameObject newPaper = Instantiate(paperPrefab, paperPosition.position, paperPosition.rotation);
+
+        newPaper.transform.SetParent(printerT);
 
         Texture2D texture = new Texture2D((int)image.rect.width, (int)image.rect.height);
         var pixels = image.texture.GetPixels((int)image.textureRect.x,
