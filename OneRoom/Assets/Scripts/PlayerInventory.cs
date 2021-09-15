@@ -14,6 +14,7 @@ public class PlayerInventory : MonoBehaviour {
 
     public GameObject flashLight;
     public GameObject whiskey;
+    public GameObject lighter;
 
     public AudioSource itemAudioSource;
 
@@ -60,6 +61,7 @@ public class PlayerInventory : MonoBehaviour {
 
         flashLight.SetActive(item != null && item.name == "Flashlight");
         whiskey.SetActive(item != null && item.name == "Whiskey");
+        lighter.SetActive(item != null && item.name == "Lighter");
     }
 
     public void Update() {
